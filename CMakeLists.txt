@@ -16,6 +16,7 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 	python
 	serialization
 	program_options
+	log
 	REQUIRED)
 
 
@@ -28,6 +29,7 @@ INCLUDE_DIRECTORIES("../Debug/include")
 include_directories("../Galaxy-Standard/include")
 include_directories("../Galaxy-Network/include")
 include_directories("../Galaxy-Log/include")
+include_directories("../Nebula-Core/include")
 include_directories("../glm")
 include_directories("../maze/include")
 include_directories(${physx_INCLUDE_DIR})
@@ -35,6 +37,7 @@ include_directories(${physx_INCLUDE_DIR})
 link_directories("../Galaxy-Network/Debug")
 link_directories("../Galaxy-Standard/Debug")
 link_directories("../Galaxy-Log/Debug")
+link_directories("../Nebula-Core/Debug")
 link_directories("../Debug")
 link_directories("../maze/Debug")
 link_directories("../Nebula-Core/Debug")
@@ -46,6 +49,7 @@ ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 SET(libs
 		neb_core
 		gal_std_shared
+		galaxy_log
 		${Boost_LIBRARIES}
 		python2.7
 		pthread

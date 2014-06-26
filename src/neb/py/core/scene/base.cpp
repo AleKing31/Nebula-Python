@@ -25,8 +25,8 @@ void		neb::py::core::scene::base::createActorRigidStaticCube(boost::python::obje
 
 void		export_scene() {
 
-//	boost::python::class_<neb::py::core::scene::base>("scene");
-
+	boost::python::class_<neb::py::core::scene::base>("scene")
+		.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);
 	//        .def("greet", &World::greet)
 	//       .def("set", &World::set)
 	//    ;
