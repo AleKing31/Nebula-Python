@@ -2,49 +2,33 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(neb_py)
+PROJECT(nebula_python)
 
 FIND_PACKAGE(CMakeHelper)
 
-set(Boost_USE_STATIC_LIBS OFF)
-set(Boost_USE_STATIC_RUNTIME OFF)
-add_definitions( -DBOOST_ALL_DYN_LINK )
 
+cmh_boost_shared()
 FIND_PACKAGE(Boost 1.55 COMPONENTS
 	system
 	thread
 	python
 	serialization
-	program_options
-	log
 	REQUIRED)
 
-FIND_PACKAGE(Galaxy COMPONENETS
-	std
-	log
-	)
-
-FIND_PACKAGE(Nebula COMPONENETS
-	core
-	)
+FIND_PACKAGE(galaxy_std_shared REQUIRED)
+FIND_PACKAGE(nebula_core_shared REQUIRED)
 
 
+#SET(Nebula_SHARED TRUE)
+#FIND_PACKAGE(Nebula COMPONENETS core REQUIRED)
 
 INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
 INCLUDE_DIRECTORIES("/usr/include/python2.7")
 include_directories("/usr/include/freetype2")
-INCLUDE_DIRECTORIES("../include")
-INCLUDE_DIRECTORIES("../Debug/include")
-include_directories("../glm")
-include_directories("../maze/include")
 include_directories(${physx_INCLUDE_DIR})
-
-link_directories("../Debug")
-link_directories("../maze/Debug")
 
 
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
-
 
 SET(libs
 	${Nebula_LIBRARIES}
@@ -54,12 +38,10 @@ SET(libs
 	pthread
    )
 
-MESSAGE(STATUS ${libs})
-
-
 cmh_shared_library()
 
-TARGET_LINK_LIBRARIES(neb_py ${libs})
+MESSAGE(STATUS "add ${PROJECT_BINARY_DIR} to PYTHONPATH")
+SET(ENV{PYTHONPATH} $ENV{PYTHONPATH} ${PROJECT_BINARY_DIR})
 
 #ADD_SUBDIRECTORY(test)
 

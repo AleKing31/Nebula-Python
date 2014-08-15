@@ -3,6 +3,7 @@
 
 #include <neb/py/core/pose.hpp>
 #include <neb/py/core/scene/base.hpp>
+#include <neb/py/config.hpp>
 
 /*
 #if BOOST_VERSION==105500
@@ -14,7 +15,7 @@
 #endif
 */
 
-BOOST_PYTHON_MODULE(libneb_py)
+BOOST_PYTHON_MODULE(LIB_NAME)
 {
 	export_pose();
 	export_scene();

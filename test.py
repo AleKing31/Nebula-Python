@@ -1,1 +1,4 @@
-import libneb_py
+#!/usr/bin/env python
+
+import libnebula_python
+
