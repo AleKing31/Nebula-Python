@@ -2,7 +2,7 @@
 #include <boost/python.hpp>
 
 #include <neb/core/pose.hpp>
-#include <neb/core/scene/base.hpp>
+#include <neb/core/core/scene/base.hpp>
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/core/pose.hpp>

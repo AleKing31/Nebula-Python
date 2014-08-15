@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/scene/util/decl.hpp>
+#include <neb/core/core/scene/util/decl.hpp>
 
 using namespace std;
 
@@ -16,7 +16,8 @@ namespace neb {
 
 				class base {
 					public:
-						void						createActorRigidStaticCube(boost::python::object& pose, boost::python::object& size);
+						void					createActorRigidStaticCube(
+								boost::python::object& pose, boost::python::object& size);
 						weak_ptr<neb::core::core::scene::base>		scene_;
 				};
 			}
