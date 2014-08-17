@@ -15,7 +15,7 @@
 #endif
 */
 
-BOOST_PYTHON_MODULE(LIB_NAME)
+BOOST_PYTHON_MODULE(PY_LIB_NAME)
 {
 	export_pose();
 	export_scene();
