@@ -2,12 +2,14 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8.8)
 
 INCLUDE($ENV{HOME}/.config.cmake)
 
-PROJECT(nebula_python)
-
 FIND_PACKAGE(CMakeHelper)
 
+PROJECT(nebula_python)
+INCLUDE(../../config.cmake)
+INCLUDE(cmh_build_config)
 
-cmh_boost_shared()
+
+INCLUDE(cmh_boost)
 FIND_PACKAGE(Boost 1.55 COMPONENTS
 	system
 	thread
@@ -15,8 +17,8 @@ FIND_PACKAGE(Boost 1.55 COMPONENTS
 	serialization
 	REQUIRED)
 
-FIND_PACKAGE(galaxy_std_shared REQUIRED)
-FIND_PACKAGE(nebula_core_shared REQUIRED)
+FIND_PACKAGE(galaxy 0 COMPONENTS std REQUIRED)
+FIND_PACKAGE(nebula 0 COMPONENTS core REQUIRED)
 
 
 #SET(Nebula_SHARED TRUE)
@@ -38,10 +40,7 @@ SET(libs
 	pthread
    )
 
-cmh_shared_library()
-
-MESSAGE(STATUS "add ${PROJECT_BINARY_DIR} to PYTHONPATH")
-SET(ENV{PYTHONPATH} $ENV{PYTHONPATH} ${PROJECT_BINARY_DIR})
+INCLUDE(cmh_library)
 
 #ADD_SUBDIRECTORY(test)
 
