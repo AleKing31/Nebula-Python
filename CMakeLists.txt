@@ -30,9 +30,11 @@ include_directories(${physx_INCLUDE_DIR})
 ADD_DEFINITIONS("-D_DEBUG -DGAL_NET_USE_BOOST -DGLM_FORCE_RADIANS")
 
 SET(libs
-	${Nebula_LIBRARIES}
-	${Galaxy_LIBRARIES}
+	${nebula_LIBRARIES}
+	#${galaxy_LIBRARIES}
 	${Boost_LIBRARIES}
+	#galaxy_std_0
+	#nebula_core_0
 	python2.7
 	pthread
    )
