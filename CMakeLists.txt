@@ -8,13 +8,14 @@ PROJECT(nebula_python)
 INCLUDE(../../config.cmake)
 INCLUDE(cmh_build_config)
 
+SET(SHARED True)
 
 INCLUDE(cmh_boost)
 FIND_PACKAGE(Boost 1.55 COMPONENTS
 	python
 	REQUIRED)
 
-FIND_PACKAGE(galaxy 0 COMPONENTS std REQUIRED)
+FIND_PACKAGE(galaxy 0 COMPONENTS std log console REQUIRED)
 FIND_PACKAGE(nebula 0 COMPONENTS core REQUIRED)
 
 
