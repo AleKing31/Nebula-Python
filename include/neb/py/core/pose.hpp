@@ -3,29 +3,27 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/pose.hpp>
+#include <neb/core/math/pose.hpp>
 
 namespace bp = boost::python;
 
 void	export_pose();
 
-namespace neb {
-	namespace py {
-		namespace core {
-			class pose: public neb::core::pose {
-				public:
-					bp::list	getPos() {
-						bp::list l;
-						l.append(pos_[0]);
-						l.append(pos_[1]);
-						l.append(pos_[2]);
-						l.append(pos_[3]);
-						return l;
-					}
-			};
-		}
-	}
-}
+namespace neb { namespace py { namespace math {
+
+	class pose: public neb::core::math::pose {
+		public:
+			bp::list	getPos() {
+				bp::list l;
+				l.append(pos_[0]);
+				l.append(pos_[1]);
+				l.append(pos_[2]);
+				l.append(pos_[3]);
+				return l;
+			}
+	};
+
+}}}
 
 /*BOOST_PYTHON_MODULE(libneb-py) {
 
