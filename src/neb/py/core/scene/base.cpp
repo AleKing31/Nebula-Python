@@ -7,22 +7,28 @@
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/core/pose.hpp>
 
+typedef neb::py::core::scene::base THIS;
 
-void		neb::py::core::scene::base::createActorRigidStaticCube(
-	boost::python::object& pose_obj,
-	boost::python::object& size_obj)
+THIS::base()
+{}
+THIS::base(std::weak_ptr<neb::core::core::scene::base> scene):
+	scene_(scene)
+{}
+void			THIS::createActorRigidStaticCube(
+		boost::python::object& pose_obj,
+		boost::python::object& size_obj)
 {
-	
-//	auto pose = boost::python::extract<neb::core::math::pose&>(pose_obj);
+
+	//	auto pose = boost::python::extract<neb::core::math::pose&>(pose_obj);
 	neb::core::math::pose pose;
 
 	double size = bp::extract<double>(size_obj);
-	
+
 	auto scene(scene_.lock());
 	assert(scene);
 
 	scene->createActorRigidStaticCube(pose, size);
-	
+
 }
 
 void		export_scene()
