@@ -14,7 +14,7 @@ namespace neb { namespace py { namespace app {
 		public:
 			boost::python::object			createScene();
 			boost::python::object			createSceneDll(boost::python::object&);
-		private:
+		public:
 			std::weak_ptr<neb::core::app::base>	app_;
 	};
 }}}

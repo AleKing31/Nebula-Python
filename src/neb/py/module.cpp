@@ -1,6 +1,7 @@
 
 #include <boost/version.hpp>
 
+#include <neb/py/app/base.hpp>
 #include <neb/py/core/pose.hpp>
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/util/config.hpp>
@@ -19,5 +20,6 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 {
 	export_pose();
 	export_scene();
+	export_app();
 }
 
