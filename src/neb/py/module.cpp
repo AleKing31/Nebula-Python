@@ -3,7 +3,7 @@
 
 #include <neb/py/core/pose.hpp>
 #include <neb/py/core/scene/base.hpp>
-#include <neb/py/config.hpp>
+#include <neb/py/util/config.hpp>
 
 /*
 #if BOOST_VERSION==105500
