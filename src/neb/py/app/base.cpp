@@ -9,9 +9,25 @@
 
 typedef neb::py::app::base THIS;
 
+boost::python::list			getScenes()
+{
+	boost::python::list l;
+	auto app = neb::core::app::base::global();
+	
+	neb::core::core::scene::util::parent & p = *app;
+	
+	for(auto it : p)
+	{
+		neb::py::core::scene::base ps(it.second.ptr_);
+		//ps.scene_ = scene;
+		l.append(ps);
+	}
+	
+	return l;
+}
 boost::python::object			createScene()
 {
-	auto app = neb::core::app::__base::global();
+	auto app = neb::core::app::base::global();
 	
 	auto scene = app->createScene();
 
@@ -19,7 +35,7 @@ boost::python::object			createScene()
 }
 boost::python::object			createSceneDll(boost::python::object& o)
 {
-	auto app = neb::core::app::__base::global();
+	auto app = neb::core::app::base::global();
 	
 	char* s = bp::extract<char*>(o);
 
@@ -33,6 +49,7 @@ void		export_app()
 {
 	
 	boost::python::def("createScene", createScene);
+	boost::python::def("getScenes",   getScenes);
 
 	//boost::python::class_<neb::py::app::base>("App");
 	//	.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);
