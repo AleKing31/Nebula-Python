@@ -13,14 +13,7 @@ namespace neb { namespace py { namespace math {
 
 	class pose: public neb::core::math::pose {
 		public:
-			bp::list	getPos() {
-				bp::list l;
-				l.append(pos_[0]);
-				l.append(pos_[1]);
-				l.append(pos_[2]);
-				l.append(pos_[3]);
-				return l;
-			}
+			bp::list	getPos();
 	};
 
 }}}
