@@ -33,7 +33,7 @@ boost::python::object			createScene()
 
 	return bp::object(neb::py::core::scene::base(scene));
 }
-boost::python::object			createSceneDll(boost::python::object& o)
+boost::python::object			createSceneDLL(boost::python::object& o)
 {
 	auto app = neb::core::app::base::global();
 	
@@ -49,6 +49,7 @@ void		export_app()
 {
 	
 	boost::python::def("createScene", createScene);
+	boost::python::def("createSceneDLL", createSceneDLL);
 	boost::python::def("getScenes",   getScenes);
 
 	//boost::python::class_<neb::py::app::base>("App");
