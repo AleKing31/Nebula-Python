@@ -10,8 +10,9 @@ namespace neb { namespace py { namespace core { namespace shape { namespace cubo
 	class Desc: public neb::core::core::shape::cuboid::Desc
 	{
 		public:
-			static void	export();
+			static void	export_class();
 
+			Desc();
 			Desc(float sx, float sy, float sz);
 
 

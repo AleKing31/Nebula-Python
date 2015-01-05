@@ -29,6 +29,6 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 	bp::scope scope_shape = bp::class_<dummy_shape>("shape");
 	bp::scope scope_shape_cuboid = bp::class_<dummy_shape_cuboid>("cuboid");
 	
-	neb::py::core::shape::cuboid::Desc::export();
+	neb::py::core::shape::cuboid::Desc::export_class();
 }
 
