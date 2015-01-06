@@ -5,6 +5,7 @@
 #include <neb/core/core/scene/base.hpp>
 
 #include <neb/py/core/scene/base.hpp>
+#include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/core/pose.hpp>
 
 typedef neb::py::core::scene::base THIS;
@@ -30,12 +31,24 @@ void			THIS::createActorRigidStaticCube(
 	scene->createActorRigidStaticCube(pose, size);
 
 }
+neb::py::core::actor::rigiddynamic::base	THIS::createActorRigidDynamic()
+{
+	auto scene(scene_.lock());
+	assert(scene);
+	
+	auto actor = scene->createActorRigidDynamic();
+	
+	neb::py::core::actor::rigiddynamic::base py_actor(actor);
+
+	return py_actor;
+}
 
 void		export_scene()
 {
+	auto c = bp::class_<neb::py::core::scene::base>("scene");
+	c.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);
+	c.def("createActorRigidDynamic", &neb::py::core::scene::base::createActorRigidDynamic);
 
-	boost::python::class_<neb::py::core::scene::base>("scene")
-		.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);
 	//        .def("greet", &World::greet)
 	//       .def("set", &World::set)
 	//    ;
