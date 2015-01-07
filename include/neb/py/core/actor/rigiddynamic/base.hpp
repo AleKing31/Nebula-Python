@@ -3,6 +3,8 @@
 
 #include <boost/python.hpp>
 
+namespace bp = boost::python;
+
 #include <neb/core/core/actor/util/decl.hpp>
 
 #include <neb/py/core/actor/rigidactor/base.hpp>

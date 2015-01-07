@@ -1,4 +1,6 @@
+
 #include <boost/python.hpp>
+namespace bp = boost::python;
 
 #include <neb/py/core/shape/cuboid/Desc.hpp>
 
@@ -11,6 +13,6 @@ neb::py::core::shape::cuboid::Desc::Desc(float sx, float sy, float sz):
 }
 void neb::py::core::shape::cuboid::Desc::export_class()
 {
-	boost::python::class_<neb::py::core::shape::cuboid::Desc>("Desc");
+	auto c = bp::class_<neb::py::core::shape::cuboid::Desc>("Desc", bp::init<float,float,float>());
 }
 

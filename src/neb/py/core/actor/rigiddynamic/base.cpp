@@ -6,6 +6,7 @@ typedef neb::py::core::actor::rigiddynamic::base THIS;
 
 void		THIS::export_class()
 {
+	auto c = bp::class_<THIS>("rigiddynamic");
 }
 THIS::base()
 {
