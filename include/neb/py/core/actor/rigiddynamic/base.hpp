@@ -5,10 +5,12 @@
 
 #include <neb/core/core/actor/util/decl.hpp>
 
+#include <neb/py/core/actor/rigidactor/base.hpp>
 
 namespace neb { namespace py { namespace core { namespace actor { namespace rigiddynamic {
 
-	class base
+	class base:
+		public neb::py::core::actor::rigidactor::base
 	{
 		public:
 			static void		export_class();

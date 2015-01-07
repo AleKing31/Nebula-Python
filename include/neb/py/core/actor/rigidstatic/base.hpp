@@ -4,17 +4,17 @@
 #include <boost/python.hpp>
 
 #include <neb/core/core/actor/util/decl.hpp>
+#include <neb/py/core/actor/rigidactor/base.hpp>
 
 namespace neb { namespace py { namespace core { namespace actor { namespace rigidstatic {
 
-	class base
+	class base:
+		public neb::py::core::actor::rigidactor::base
 	{
 		public:
 			static void		export_class();
 			base();
 			base(std::weak_ptr<neb::core::core::actor::rigidstatic::base>);
-			void			createShapeCuboid(
-					boost::python::object& desc);
 		private:
 			std::weak_ptr<neb::core::core::actor::rigidstatic::base>	actor_;
 	};

@@ -2,6 +2,8 @@
 #include <boost/python.hpp>
 
 #include <neb/core/math/pose.hpp>
+#include <neb/core/core/actor/rigiddynamic/base.hpp>
+#include <neb/core/core/actor/rigidstatic/base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
 #include <neb/py/core/scene/base.hpp>
@@ -45,7 +47,7 @@ bp::object		THIS::createActorRigidDynamic()
 	
 	neb::py::core::actor::rigiddynamic::base py_actor(actor);
 	
-	return py_actor;
+	return bp::object(py_actor);
 }
 
 void		export_scene()
