@@ -6,6 +6,7 @@
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
+#include <neb/py/core/actor/rigidstatic/base.hpp>
 #include <neb/py/core/pose.hpp>
 
 typedef neb::py::core::scene::base THIS;
@@ -15,11 +16,10 @@ THIS::base()
 THIS::base(std::weak_ptr<neb::core::core::scene::base> scene):
 	scene_(scene)
 {}
-void			THIS::createActorRigidStaticCube(
+bp::object		THIS::createActorRigidStaticCube(
 		boost::python::object& pose_obj,
 		boost::python::object& size_obj)
 {
-
 	//	auto pose = boost::python::extract<neb::core::math::pose&>(pose_obj);
 	neb::core::math::pose pose;
 
@@ -28,18 +28,23 @@ void			THIS::createActorRigidStaticCube(
 	auto scene(scene_.lock());
 	assert(scene);
 
-	scene->createActorRigidStaticCube(pose, size);
+	auto actor = std::dynamic_pointer_cast<neb::core::core::actor::rigidstatic::base>(scene->createActorRigidStaticCube(pose, size).lock());
+	
+	neb::py::core::actor::rigidstatic::base py_actor(actor);
 
+	return bp::object(py_actor);
 }
-neb::py::core::actor::rigiddynamic::base	THIS::createActorRigidDynamic()
+bp::object		THIS::createActorRigidDynamic()
 {
 	auto scene(scene_.lock());
 	assert(scene);
 	
-	auto actor = scene->createActorRigidDynamic();
+	
+
+	auto actor = std::dynamic_pointer_cast<neb::core::core::actor::rigiddynamic::base>(scene->createActorRigidDynamic().lock());
 	
 	neb::py::core::actor::rigiddynamic::base py_actor(actor);
-
+	
 	return py_actor;
 }
 
