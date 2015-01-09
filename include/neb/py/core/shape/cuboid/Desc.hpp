@@ -13,7 +13,10 @@ namespace neb { namespace py { namespace core { namespace shape { namespace cubo
 			static void	export_class();
 
 			Desc();
+			Desc(Desc const &);
+			Desc(Desc&&);
 			Desc(float sx, float sy, float sz);
+			Desc&		operator=(Desc const &);
 
 
 	};
