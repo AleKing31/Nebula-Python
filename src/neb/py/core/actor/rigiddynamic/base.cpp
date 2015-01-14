@@ -1,4 +1,4 @@
-
+#include <cassert>
 #include <neb/core/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 
@@ -11,11 +11,13 @@ void		THIS::export_class()
 }
 THIS::base()
 {
+	assert(0);
 }
 THIS::base(std::weak_ptr<neb::core::core::actor::rigiddynamic::base> actor):
+	neb::py::core::actor::rigidactor::base(actor),
 	actor_(actor)
 {
-	rigidactor_ = actor;
+	assert(actor.lock());
 }
 
 

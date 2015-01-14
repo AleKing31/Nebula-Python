@@ -12,11 +12,14 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 	class base
 	{
 		public:
+			typedef neb::core::core::actor::rigidactor::base CORE_TYPE;
 			//static void		export_class();
 			bp::object		createShapeCuboid(
 					boost::python::object& desc);
+			base();
+			base(std::weak_ptr<CORE_TYPE>);
 		protected:
-			std::weak_ptr<neb::core::core::actor::rigidactor::base>		rigidactor_;
+			std::weak_ptr<CORE_TYPE>		rigidactor_;
 	};
 }}}}}
 

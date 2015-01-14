@@ -4,6 +4,7 @@
 #include <neb/py/app/base.hpp>
 #include <neb/py/core/pose.hpp>
 #include <neb/py/core/scene/base.hpp>
+#include <neb/py/core/shape/base.hpp>
 #include <neb/py/core/shape/cuboid/Desc.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/util/config.hpp>
@@ -31,6 +32,9 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 	export_app();
 	{
 		bp::scope scope_shape = bp::class_<dummy_shape>("shape");
+
+		neb::py::core::shape::Base::export_class();
+
 		bp::scope scope_shape_cuboid = bp::class_<dummy_shape_cuboid>("cuboid");
 
 		neb::py::core::shape::cuboid::Desc::export_class();

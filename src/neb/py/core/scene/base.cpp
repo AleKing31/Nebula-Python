@@ -41,10 +41,10 @@ bp::object		THIS::createActorRigidDynamic()
 	auto scene(scene_.lock());
 	assert(scene);
 	
-	
-
 	auto actor = std::dynamic_pointer_cast<neb::core::core::actor::rigiddynamic::base>(scene->createActorRigidDynamic().lock());
-	
+
+	assert(actor);
+
 	neb::py::core::actor::rigiddynamic::base py_actor(actor);
 	
 	return bp::object(py_actor);

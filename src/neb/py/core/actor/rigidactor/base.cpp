@@ -6,6 +6,14 @@
 
 typedef neb::py::core::actor::rigidactor::base THIS;
 
+THIS::base()
+{
+	assert(0);
+}
+THIS::base(std::weak_ptr<CORE_TYPE> p):
+	rigidactor_(p)
+{
+}
 bp::object		THIS::createShapeCuboid(
 		boost::python::object& desc_obj)
 {
