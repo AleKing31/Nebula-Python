@@ -9,4 +9,8 @@ THIS::Base(std::weak_ptr<CORE_TYPE> s):
 	shape_(s)
 {
 }
+void	THIS::export_class()
+{
+	auto c = bp::class_<THIS>("Base");
+}
 
