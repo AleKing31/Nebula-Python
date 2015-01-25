@@ -9,7 +9,13 @@
 
 typedef neb::py::app::base THIS;
 
-boost::python::list			getScenes()
+boost::python::object			THIS::createWindow()
+{
+	auto app = neb::core::app::base::global();
+
+	auto window = app->createWindow();
+}
+boost::python::list			THIS::getScenes()
 {
 	boost::python::list l;
 	auto app = neb::core::app::base::global();
@@ -25,7 +31,7 @@ boost::python::list			getScenes()
 	
 	return l;
 }
-boost::python::object			createScene()
+boost::python::object			THIS::createScene()
 {
 	auto app = neb::core::app::base::global();
 	
@@ -33,7 +39,7 @@ boost::python::object			createScene()
 
 	return bp::object(neb::py::core::scene::base(scene));
 }
-boost::python::object			createSceneDLL(boost::python::object& o)
+boost::python::object			THIS::createSceneDLL(boost::python::object& o)
 {
 	auto app = neb::core::app::base::global();
 	
@@ -48,9 +54,13 @@ boost::python::object			createSceneDLL(boost::python::object& o)
 void		export_app()
 {
 	
-	boost::python::def("createScene", createScene);
-	boost::python::def("createSceneDLL", createSceneDLL);
-	boost::python::def("getScenes",   getScenes);
+	boost::python::def("createWindow", THIS::createWindow);
+	boost::python::def("createLayout", THIS::createLayout);
+
+	boost::python::def("createScene", THIS::createScene);
+	boost::python::def("createSceneDLL", THIS::createSceneDLL);
+
+	boost::python::def("getScenes",   THIS::getScenes);
 
 	//boost::python::class_<neb::py::app::base>("App");
 	//	.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);

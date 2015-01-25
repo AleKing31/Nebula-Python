@@ -12,10 +12,16 @@ namespace neb { namespace py { namespace app {
 	class base
 	{
 		public:
-			boost::python::object			createScene();
-			boost::python::object			createSceneDll(boost::python::object&);
+			static boost::python::object			createWindow();
+			static boost::python::object			createGame();
+
+			static boost::python::object			createLayout(boost::python::object&, boost::python::object&);
+			static boost::python::object			createScene();
+			static boost::python::object			createSceneDLL(boost::python::object&);
+
+			static boost::python::list			getScenes();
 		public:
-			std::weak_ptr<neb::core::app::base>	app_;
+			std::weak_ptr<neb::core::app::base>		app_;
 	};
 }}}
 
