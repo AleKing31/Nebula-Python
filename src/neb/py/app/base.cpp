@@ -6,6 +6,7 @@
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/app/base.hpp>
+#include <neb/py/window/Base.hpp>
 
 typedef neb::py::app::base THIS;
 
@@ -14,6 +15,10 @@ boost::python::object			THIS::createWindow()
 	auto app = neb::core::app::base::global();
 
 	auto window = app->createWindow();
+
+	neb::py::window::Base pw(window);
+
+	return boost::python::object(pw);
 }
 boost::python::list			THIS::getScenes()
 {

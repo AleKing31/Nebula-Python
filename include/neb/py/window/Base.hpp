@@ -10,8 +10,8 @@ namespace neb { namespace py { namespace window {
 	class Base {
 		public:
 			static void		export_class();
-			base();
-			base(std::weak_ptr<neb::core::window::Base>);
+			Base();
+			Base(std::weak_ptr<neb::core::window::Base>&);
 
 			/*
 			boost::python::object		createActorRigidDynamic();
