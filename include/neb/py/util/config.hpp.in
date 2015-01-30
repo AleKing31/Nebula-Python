@@ -1,7 +1,7 @@
 #ifndef NEB_PY_CONFIG_HPP
 #define NEB_PY_CONFIG_HPP
 
-#define PY_LIB_NAME lib@PROJECT_NAME@
-#define PY_LIB_DIR @PROJECT_BINARY_DIR@
+#define PY_LIB_NAME lib{{ name }}
+#define PY_LIB_DIR {{ build_dir }}
 
 #endif
