@@ -48,5 +48,12 @@ INCLUDE(cmh_library)
 
 l = Library("nebula_python")
 
+l.inc_dirs.append("/usr/include/python2.7")
+
+l.require("galaxy_std")
+l.require("galaxy_log")
+l.require("galaxy_console")
+l.require("nebula_core")
+
 l.make()
 
