@@ -5,7 +5,6 @@
 
 #include <neb/core/util/decl.hpp>
 
-void		export_app();
 
 namespace neb { namespace py { namespace app {
 	/***/
@@ -15,11 +14,15 @@ namespace neb { namespace py { namespace app {
 			static boost::python::object			createWindow();
 			static boost::python::object			createGame();
 
-			static boost::python::object			createLayout(boost::python::object&, boost::python::object&);
+			static boost::python::object			createLayout(
+					boost::python::object& window,
+					boost::python::object& context);
 			static boost::python::object			createScene();
 			static boost::python::object			createSceneDLL(boost::python::object&);
 
 			static boost::python::list			getScenes();
+
+			static void					export_class();
 		public:
 			std::weak_ptr<neb::core::app::base>		app_;
 	};

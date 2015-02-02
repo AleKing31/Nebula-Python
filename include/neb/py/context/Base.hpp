@@ -1,17 +1,16 @@
-#ifndef NEB_PY_WINDOW_BASE
-#define NEB_PY_WINDOW_BASE
+#ifndef NEB_PY_CONTEXT_BASE
+#define NEB_PY_CONTEXT_BASE
 
 #include <boost/python.hpp>
 
-#include <neb/core/util/decl.hpp>
+#include <neb/core/context/util/decl.hpp>
 
-
-namespace neb { namespace py { namespace window {
+namespace neb { namespace py { namespace context {
 	class Base {
 		public:
 			static void		export_class();
 			Base();
-			Base(std::weak_ptr<neb::core::window::Base>&);
+			Base(std::weak_ptr<neb::core::context::Base>&);
 
 			/*
 			boost::python::object		createActorRigidDynamic();
@@ -22,10 +21,8 @@ namespace neb { namespace py { namespace window {
 
 			
 		//private:
-			std::weak_ptr<neb::core::window::Base>		window_;
+			std::weak_ptr<neb::core::context::Base>		context_;
 	};
 }}}
 
 #endif
-
-

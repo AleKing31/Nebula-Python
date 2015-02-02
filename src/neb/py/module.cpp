@@ -29,7 +29,7 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 {
 	export_pose();
 	export_scene();
-	export_app();
+	neb::py::app::base::export_class();
 	{
 		bp::scope scope_shape = bp::class_<dummy_shape>("shape");
 

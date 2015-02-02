@@ -7,6 +7,8 @@
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/app/base.hpp>
 #include <neb/py/window/Base.hpp>
+#include <neb/py/context/Base.hpp>
+#include <neb/py/gui/layout/Base.hpp>
 
 typedef neb::py::app::base THIS;
 
@@ -19,6 +21,35 @@ boost::python::object			THIS::createWindow()
 	neb::py::window::Base pw(window);
 
 	return boost::python::object(pw);
+}
+boost::python::object			THIS::createLayout(
+		boost::python::object& window_obj,
+		boost::python::object& context_obj)
+{
+	auto app = neb::core::app::base::global();
+
+	// window
+	auto window_ex = boost::python::extract<neb::py::window::Base&>(window_obj);
+	assert(window_ex.check());
+	auto window_py = window_ex();
+
+	auto window = window_py.window_.lock();
+	assert(window);
+
+	// context
+	auto context_ex = boost::python::extract<neb::py::context::Base&>(context_obj);
+	assert(context_ex.check());
+	auto context_py = context_ex();
+
+	auto context = context_py.context_.lock();
+	assert(context);
+
+
+	auto layout = app->createLayout(window, context);
+	
+	neb::py::gui::layout::Base layout_py(layout);
+
+	return boost::python::object(layout_py);
 }
 boost::python::list			THIS::getScenes()
 {
@@ -56,9 +87,8 @@ boost::python::object			THIS::createSceneDLL(boost::python::object& o)
 
 	return bp::object(neb::py::core::scene::base(scene));
 }
-void		export_app()
+void					THIS::export_class()
 {
-	
 	boost::python::def("createWindow", THIS::createWindow);
 	boost::python::def("createLayout", THIS::createLayout);
 
