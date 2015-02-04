@@ -2,6 +2,7 @@
 #include <boost/version.hpp>
 
 #include <neb/py/app/base.hpp>
+#include <neb/py/window/Base.hpp>
 #include <neb/py/core/pose.hpp>
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/core/shape/base.hpp>
@@ -23,6 +24,7 @@ class dummy_shape {};
 class dummy_shape_cuboid {};
 class dummy_actor {};
 class dummy_actor_rigiddynamic {};
+class dummy_window {};
 
 
 BOOST_PYTHON_MODULE(PY_LIB_NAME)
@@ -30,6 +32,7 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 	export_pose();
 	export_scene();
 	neb::py::app::base::export_class();
+
 	{
 		bp::scope scope_shape = bp::class_<dummy_shape>("shape");
 
@@ -45,6 +48,12 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 		bp::scope scope_actor_rigiddynamic = bp::class_<dummy_actor_rigiddynamic>("rigiddynamic");
 
 		neb::py::core::actor::rigiddynamic::base::export_class();
+	}
+
+	{
+		bp::scope scope_window = bp::class_<dummy_window>("window");
+
+		neb::py::window::Base::export_class();
 	}
 
 }
