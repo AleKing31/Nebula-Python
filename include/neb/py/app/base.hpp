@@ -5,7 +5,6 @@
 
 #include <neb/core/util/decl.hpp>
 
-
 namespace neb { namespace py { namespace app {
 	/***/
 	class Base
