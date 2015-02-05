@@ -12,6 +12,11 @@
 
 typedef neb::py::app::base THIS;
 
+THIS::Base(std::shared_ptr<neb::core::app::Base> app):
+	_M_weak_app(app)
+{
+	assert(app);
+}
 boost::python::object			THIS::createWindow()
 {
 	auto app = neb::core::app::base::global();
@@ -103,8 +108,6 @@ void					THIS::export_class()
 	//       .def("set", &World::set)
 	//    ;
 }
-
-
 
 
 

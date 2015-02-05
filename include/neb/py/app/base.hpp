@@ -8,23 +8,20 @@
 
 namespace neb { namespace py { namespace app {
 	/***/
-	class base
+	class Base
 	{
 		public:
-			static boost::python::object			createWindow();
-			static boost::python::object			createGame();
-
-			static boost::python::object			createLayout(
+			Base(std::shared<neb::core::app::Base>);
+			boost::python::object			createWindow();
+			boost::python::object			createGame();
+			boost::python::object			createLayout(
 					boost::python::object& window,
 					boost::python::object& context);
-			static boost::python::object			createScene();
-			static boost::python::object			createSceneDLL(boost::python::object&);
-
-			static boost::python::list			getScenes();
-
-			static void					export_class();
-		public:
-			std::weak_ptr<neb::core::app::base>		app_;
+			boost::python::object			createScene();
+			boost::python::object			createSceneDLL(boost::python::object&);
+			boost::python::list			getScenes();
+			void					export_class();
+			std::weak_ptr<neb::core::app::base>	_M_weak_app;
 	};
 }}}
 
