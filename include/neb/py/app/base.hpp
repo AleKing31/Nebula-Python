@@ -10,7 +10,8 @@ namespace neb { namespace py { namespace app {
 	class Base
 	{
 		public:
-			Base(std::shared<neb::core::app::Base>);
+			Base();
+			Base(std::shared_ptr<neb::core::app::Base> app);
 			boost::python::object			createWindow();
 			boost::python::object			createGame();
 			boost::python::object			createLayout(
@@ -19,8 +20,9 @@ namespace neb { namespace py { namespace app {
 			boost::python::object			createScene();
 			boost::python::object			createSceneDLL(boost::python::object&);
 			boost::python::list			getScenes();
-			void					export_class();
-			std::weak_ptr<neb::core::app::base>	_M_weak_app;
+			static void				export_class();
+		private:
+			std::weak_ptr<neb::core::app::Base>	_M_weak_app;
 	};
 }}}
 
