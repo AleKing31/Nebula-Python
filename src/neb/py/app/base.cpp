@@ -9,6 +9,7 @@
 #include <neb/py/window/Base.hpp>
 #include <neb/py/context/Base.hpp>
 #include <neb/py/gui/layout/Base.hpp>
+//#include <neb/py/game/game/Base.hpp>
 
 typedef neb::py::app::Base THIS;
 
@@ -43,7 +44,7 @@ boost::python::object			THIS::createLayout(
 	assert(window_ex.check());
 	auto window_py = window_ex();
 
-	auto window = window_py.window_.lock();
+	auto window = window_py.get_window();
 	assert(window);
 
 	// context
@@ -79,6 +80,24 @@ boost::python::list			THIS::getScenes()
 	
 	return l;
 }
+boost::python::list			THIS::get_windows()
+{
+	boost::python::list l;
+
+	//auto app = neb::core::app::Base::global();
+	auto app = _M_weak_app.lock();
+	
+	neb::core::window::util::Parent & p = *app;
+	
+	for(auto it : p)
+	{
+		neb::py::window::Base ps(it.second.ptr_);
+		//ps.scene_ = scene;
+		l.append(ps);
+	}
+	
+	return l;
+}
 boost::python::object			THIS::createScene()
 {
 	//auto app = neb::core::app::Base::global();
@@ -87,6 +106,16 @@ boost::python::object			THIS::createScene()
 	auto scene = app->createScene();
 
 	return bp::object(neb::py::core::scene::base(scene));
+}
+boost::python::object			THIS::createGame()
+{
+	//auto app = neb::core::app::Base::global();
+	auto app = _M_weak_app.lock();
+	
+	auto game = app->createGame();
+	
+	//return bp::object(neb::py::game::base(game));
+	return boost::python::object();
 }
 boost::python::object			THIS::createSceneDLL(boost::python::object& o)
 {
@@ -107,9 +136,11 @@ void					THIS::export_class()
 	
 	c.def("createWindow",	&THIS::createWindow);
 	c.def("createLayout",	&THIS::createLayout);
+	c.def("createGame",	&THIS::createGame);
 	c.def("createScene",	&THIS::createScene);
 	c.def("createSceneDLL",	&THIS::createSceneDLL);
 	c.def("getScenes",	&THIS::getScenes);
+	c.def("get_windows",	&THIS::get_windows);
 
 	//boost::python::class_<neb::py::app::base>("App");
 	//	.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);

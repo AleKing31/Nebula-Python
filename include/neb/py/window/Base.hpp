@@ -5,27 +5,18 @@
 
 #include <neb/core/util/decl.hpp>
 
-
 namespace neb { namespace py { namespace window {
 	class Base {
 		public:
-			static void		export_class();
+			typedef neb::core::window::Base T;
+			static void				export_class();
 			Base();
-			Base(std::weak_ptr<neb::core::window::Base>&);
-
-			/*
-			boost::python::object		createActorRigidDynamic();
-			boost::python::object		createActorRigidStaticCube(
-					boost::python::object& pose,
-					boost::python::object& size);
-					*/
-
-			
-		//private:
-			std::weak_ptr<neb::core::window::Base>		window_;
+			Base(std::weak_ptr<neb::core::window::Base>);
+			boost::python::object			createContextThree();
+			std::shared_ptr<T>			get_window();
+		private:
+			std::weak_ptr<T>			window_;
 	};
 }}}
 
 #endif
-
-
