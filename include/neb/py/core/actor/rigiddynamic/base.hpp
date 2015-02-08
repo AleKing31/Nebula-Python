@@ -17,9 +17,9 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 		public:
 			static void		export_class();
 			base();
-			base(std::weak_ptr<neb::core::core::actor::rigiddynamic::base>);
+			base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>);
 		private:
-			std::weak_ptr<neb::core::core::actor::rigiddynamic::base>	actor_;
+			std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>	actor_;
 	};
 }}}}}
 

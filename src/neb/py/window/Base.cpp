@@ -13,7 +13,7 @@ void		THIS::export_class()
 THIS::Base()
 {
 }
-THIS::Base(std::weak_ptr<neb::core::window::Base> window)
+THIS::Base(std::weak_ptr<neb::fnd::window::Base> window)
 {
 	window_ = window;
 }

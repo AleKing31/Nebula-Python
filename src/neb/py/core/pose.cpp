@@ -17,7 +17,7 @@ void		export_pose()
 
 	boost::python::class_<neb::py::math::pose>("pose")
 		.def("getPos", &neb::py::math::pose::getPos);
-	//		.def_readwrite("q", &neb::core::pose::rot_)
+	//		.def_readwrite("q", &neb::fnd::pose::rot_)
 	//		;
 
 }

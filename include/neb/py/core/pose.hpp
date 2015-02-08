@@ -11,7 +11,7 @@ void	export_pose();
 
 namespace neb { namespace py { namespace math {
 
-	class pose: public neb::core::math::pose {
+	class pose: public neb::fnd::math::pose {
 		public:
 			bp::list	getPos();
 	};
@@ -20,9 +20,9 @@ namespace neb { namespace py { namespace math {
 
 /*BOOST_PYTHON_MODULE(libneb-py) {
 
-  class_<neb::core::pose>("pose")
-  .def("p", &neb::core::pose::pos_)
-  .def("q", &neb::core::pose::rot_)
+  class_<neb::fnd::pose>("pose")
+  .def("p", &neb::fnd::pose::pos_)
+  .def("q", &neb::fnd::pose::rot_)
   ;
 
   }*/

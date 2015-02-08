@@ -13,7 +13,7 @@ THIS::Desc(THIS const & d)
 {
 }
 THIS::Desc(float sx, float sy, float sz):
-	neb::core::core::shape::cuboid::Desc(glm::vec3(sx,sy,sz))
+	neb::fnd::core::shape::cuboid::Desc(glm::vec3(sx,sy,sz))
 {
 }
 void		THIS::export_class()

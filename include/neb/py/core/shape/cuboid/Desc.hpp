@@ -7,7 +7,7 @@ void export_shape_cuboid_desc();
 
 namespace neb { namespace py { namespace core { namespace shape { namespace cuboid {
 
-	class Desc: public neb::core::core::shape::cuboid::Desc
+	class Desc: public neb::fnd::core::shape::cuboid::Desc
 	{
 		public:
 			static void	export_class();

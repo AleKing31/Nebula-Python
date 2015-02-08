@@ -11,7 +11,7 @@ void			THIS::export_class()
 THIS::Base()
 {
 }
-THIS::Base(std::weak_ptr<neb::core::gui::layout::Base> layout)
+THIS::Base(std::weak_ptr<neb::fnd::gui::layout::Base> layout)
 {
 	layout_ = layout;
 }

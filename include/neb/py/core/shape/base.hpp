@@ -10,7 +10,7 @@ namespace neb { namespace py { namespace core { namespace shape {
 	class Base
 	{
 		public:
-			typedef neb::core::core::shape::base CORE_TYPE;
+			typedef neb::fnd::core::shape::base CORE_TYPE;
 			static void			export_class();
 			Base();
 			Base(std::weak_ptr<CORE_TYPE>);

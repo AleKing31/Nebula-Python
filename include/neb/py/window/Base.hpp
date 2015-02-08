@@ -8,10 +8,10 @@
 namespace neb { namespace py { namespace window {
 	class Base {
 		public:
-			typedef neb::core::window::Base T;
+			typedef neb::fnd::window::Base T;
 			static void				export_class();
 			Base();
-			Base(std::weak_ptr<neb::core::window::Base>);
+			Base(std::weak_ptr<neb::fnd::window::Base>);
 			boost::python::object			createContextThree();
 			std::shared_ptr<T>			get_window();
 		private:

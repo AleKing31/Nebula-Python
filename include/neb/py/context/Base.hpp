@@ -10,7 +10,7 @@ namespace neb { namespace py { namespace context {
 		public:
 			static void		export_class();
 			Base();
-			Base(std::weak_ptr<neb::core::context::Base>&);
+			Base(std::weak_ptr<neb::fnd::context::Base>&);
 
 			/*
 			boost::python::object		createActorRigidDynamic();
@@ -21,7 +21,7 @@ namespace neb { namespace py { namespace context {
 
 			
 		//private:
-			std::weak_ptr<neb::core::context::Base>		context_;
+			std::weak_ptr<neb::fnd::context::Base>		context_;
 	};
 }}}
 

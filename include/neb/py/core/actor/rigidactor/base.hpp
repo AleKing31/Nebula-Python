@@ -12,7 +12,7 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 	class base
 	{
 		public:
-			typedef neb::core::core::actor::rigidactor::base CORE_TYPE;
+			typedef neb::fnd::core::actor::rigidactor::base CORE_TYPE;
 			//static void		export_class();
 			bp::object		createShapeCuboid(
 					boost::python::object& desc);

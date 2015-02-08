@@ -16,14 +16,14 @@ typedef neb::py::app::Base THIS;
 THIS::Base()
 {
 }
-THIS::Base(std::shared_ptr<neb::core::app::Base> app):
+THIS::Base(std::shared_ptr<neb::fnd::app::Base> app):
 	_M_weak_app(app)
 {
 	assert(app);
 }
 boost::python::object			THIS::createWindow()
 {
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 
 	auto window = app->createWindow();
@@ -36,7 +36,7 @@ boost::python::object			THIS::createLayout(
 		boost::python::object& window_obj,
 		boost::python::object& context_obj)
 {
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 
 	// window
@@ -66,10 +66,10 @@ boost::python::list			THIS::getScenes()
 {
 	boost::python::list l;
 
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 	
-	neb::core::core::scene::util::parent & p = *app;
+	neb::fnd::core::scene::util::parent & p = *app;
 	
 	for(auto it : p)
 	{
@@ -84,10 +84,10 @@ boost::python::list			THIS::get_windows()
 {
 	boost::python::list l;
 
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 	
-	neb::core::window::util::Parent & p = *app;
+	neb::fnd::window::util::Parent & p = *app;
 	
 	for(auto it : p)
 	{
@@ -100,7 +100,7 @@ boost::python::list			THIS::get_windows()
 }
 boost::python::object			THIS::createScene()
 {
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 	
 	auto scene = app->createScene();
@@ -109,7 +109,7 @@ boost::python::object			THIS::createScene()
 }
 boost::python::object			THIS::createGame()
 {
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 	
 	auto game = app->createGame();
@@ -119,7 +119,7 @@ boost::python::object			THIS::createGame()
 }
 boost::python::object			THIS::createSceneDLL(boost::python::object& o)
 {
-	//auto app = neb::core::app::Base::global();
+	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 	
 	char* s = bp::extract<char*>(o);

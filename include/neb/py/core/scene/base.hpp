@@ -14,13 +14,13 @@ namespace neb { namespace py { namespace core { namespace scene {
 	class base {
 		public:
 			base();
-			base(std::weak_ptr<neb::core::core::scene::base>);
+			base(std::weak_ptr<neb::fnd::core::scene::base>);
 			bp::object		createActorRigidDynamic();
 			bp::object		createActorRigidStaticCube(
 					boost::python::object& pose,
 					boost::python::object& size);
 		private:
-			std::weak_ptr<neb::core::core::scene::base>	scene_;
+			std::weak_ptr<neb::fnd::core::scene::base>	scene_;
 	};
 }}}}
 

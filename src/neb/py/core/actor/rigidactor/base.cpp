@@ -24,8 +24,8 @@ bp::object		THIS::createShapeCuboid(
 	auto rigidactor(rigidactor_.lock());
 	assert(rigidactor);
 
-	//typedef neb::core::core::shape::cuboid::base S;
-	typedef neb::core::core::shape::base S;
+	//typedef neb::fnd::core::shape::cuboid::base S;
+	typedef neb::fnd::core::shape::base S;
 
 	auto shape = std::dynamic_pointer_cast<S>(rigidactor->createShapeCuboid(desc).lock());
 	

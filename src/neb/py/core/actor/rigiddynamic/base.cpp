@@ -13,7 +13,7 @@ THIS::base()
 {
 	assert(0);
 }
-THIS::base(std::weak_ptr<neb::core::core::actor::rigiddynamic::base> actor):
+THIS::base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base> actor):
 	neb::py::core::actor::rigidactor::base(actor),
 	actor_(actor)
 {

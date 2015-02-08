@@ -10,7 +10,7 @@ namespace neb { namespace py { namespace gui { namespace layout {
 		public:
 			static void		export_class();
 			Base();
-			Base(std::weak_ptr<neb::core::gui::layout::Base>);
+			Base(std::weak_ptr<neb::fnd::gui::layout::Base>);
 
 			/*
 			boost::python::object		createActorRigidDynamic();
@@ -19,7 +19,7 @@ namespace neb { namespace py { namespace gui { namespace layout {
 					boost::python::object& size);
 					*/
 		private:
-			std::weak_ptr<neb::core::gui::layout::Base>		layout_;
+			std::weak_ptr<neb::fnd::gui::layout::Base>		layout_;
 	};
 }}}}
 

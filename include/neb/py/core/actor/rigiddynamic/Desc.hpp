@@ -7,7 +7,7 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 	class Desc
 	{
 	public:
-		typedef neb::core::core::actor::rigiddynamic::Desc CORE_TYPE;
+		typedef neb::fnd::core::actor::rigiddynamic::Desc CORE_TYPE;
 
 		Desc();
 		Desc(Desc&&);
