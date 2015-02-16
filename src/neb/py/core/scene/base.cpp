@@ -3,6 +3,7 @@
 
 #include <neb/core/math/pose.hpp>
 #include <neb/core/core/actor/rigiddynamic/base.hpp>
+#include <neb/core/core/actor/rigidbody/desc.hpp>
 #include <neb/core/core/actor/rigidstatic/base.hpp>
 #include <neb/core/core/scene/base.hpp>
 
@@ -49,12 +50,40 @@ bp::object		THIS::createActorRigidDynamic()
 	
 	return bp::object(py_actor);
 }
+bp::object		THIS::createLightPoint()
+{
+	auto scene(scene_.lock());
+	assert(scene);
 
+	scene->createActorLightPoint(glm::vec3()).lock();
+	
+	return bp::object();
+}
+bp::object		THIS::createActorRigidDynamicCuboid()
+{
+	auto scene(scene_.lock());
+	assert(scene);
+
+	neb::fnd::core::actor::rigidbody::desc ad;
+	neb::fnd::core::shape::cuboid::Desc sd;
+	
+	auto actor_fnd = scene->createActorRigidDynamicCuboid(ad, sd).lock();
+
+	auto actor = std::dynamic_pointer_cast<neb::fnd::core::actor::rigiddynamic::base>(actor_fnd);
+
+	assert(actor);
+	
+	neb::py::core::actor::rigiddynamic::base py_actor(actor);
+
+	return bp::object(py_actor);
+}
 void		export_scene()
 {
 	auto c = bp::class_<neb::py::core::scene::base>("scene");
 	c.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);
 	c.def("createActorRigidDynamic", &neb::py::core::scene::base::createActorRigidDynamic);
+	c.def("createActorRigidDynamicCuboid", &neb::py::core::scene::base::createActorRigidDynamicCuboid);
+	c.def("createLightPoint", &neb::py::core::scene::base::createLightPoint);
 
 	//        .def("greet", &World::greet)
 	//       .def("set", &World::set)
