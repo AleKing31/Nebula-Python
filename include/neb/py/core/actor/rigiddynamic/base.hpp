@@ -18,6 +18,8 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 			static void		export_class();
 			base();
 			base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>);
+			void			createControlManual(
+					boost::python::object& src_obj);
 		private:
 			std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>	actor_;
 	};

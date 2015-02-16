@@ -46,6 +46,7 @@ INCLUDE(cmh_library)
 #ADD_SUBDIRECTORY(test)
 """
 
+
 l = Static("nebula_python")
 
 l.inc_dirs.append("/usr/include/python2.7")
@@ -56,6 +57,7 @@ l.require("galaxy_console")
 l.require("nebula_core")
 
 l.make()
+
 
 l = Dynamic("nebula_python")
 

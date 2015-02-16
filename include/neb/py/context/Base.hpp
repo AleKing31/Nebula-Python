@@ -8,18 +8,10 @@
 namespace neb { namespace py { namespace context {
 	class Base {
 		public:
-			static void		export_class();
+			static void			export_class();
 			Base();
-			Base(std::weak_ptr<neb::fnd::context::Base>&);
-
-			/*
-			boost::python::object		createActorRigidDynamic();
-			boost::python::object		createActorRigidStaticCube(
-					boost::python::object& pose,
-					boost::python::object& size);
-					*/
-
-			
+			Base(std::weak_ptr<neb::fnd::context::Base>);
+			boost::python::object		get_environ();
 		//private:
 			std::weak_ptr<neb::fnd::context::Base>		context_;
 	};

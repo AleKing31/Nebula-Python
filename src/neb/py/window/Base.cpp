@@ -1,6 +1,7 @@
-//#include <neb/core/context/Base.hpp>
+#include <neb/core/context/Window.hpp>
 #include <neb/core/window/Base.hpp>
 
+#include <neb/py/context/Base.hpp>
 #include <neb/py/window/Base.hpp>
 
 typedef neb::py::window::Base THIS;
@@ -24,7 +25,9 @@ boost::python::object				THIS::createContextThree()
 
 	auto context = window->createContextThree();
 
-	return boost::python::object();
+	neb::py::context::Base c_py(context);
+
+	return boost::python::object(c_py);
 }
 std::shared_ptr<THIS::T>	THIS::get_window()
 {

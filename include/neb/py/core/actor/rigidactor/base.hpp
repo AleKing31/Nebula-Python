@@ -16,6 +16,11 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 			//static void		export_class();
 			bp::object		createShapeCuboid(
 					boost::python::object& desc);
+			bp::object		createWeaponSimpleProjectile(
+					boost::python::object& src_obj,
+					boost::python::object& size_obj,
+					boost::python::object& damage_obj,
+					boost::python::object& velocity_obj);
 			base();
 			base(std::weak_ptr<CORE_TYPE>);
 		protected:
