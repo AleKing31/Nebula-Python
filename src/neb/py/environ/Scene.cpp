@@ -27,6 +27,7 @@ boost::python::object	THIS::create_view_ridealong(boost::python::object& actor_o
 	auto actor_python = actor_extract();
 
 	auto actor = actor_python._M_actor;
+	assert(actor);
 
 	e->create_view_ridealong(actor);
 
