@@ -14,7 +14,14 @@ THIS::Base(std::weak_ptr<neb::fnd::context::Base> c):
 }
 boost::python::object	THIS::get_environ()
 {
+	auto c(context_.lock());
+	assert(c);
+	
+	auto e = c->get_environ();
 
+	neb::py::environ::Base e_py(e);
+
+	return boost::python::object(e_py);
 }
 void		THIS::export_class()
 {
