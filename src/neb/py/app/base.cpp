@@ -6,6 +6,7 @@
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/app/base.hpp>
+#include <neb/py/game/game/Base.hpp>
 #include <neb/py/window/Base.hpp>
 #include <neb/py/context/Base.hpp>
 #include <neb/py/gui/layout/Base.hpp>
@@ -114,8 +115,8 @@ boost::python::object			THIS::createGame()
 	
 	auto game = app->createGame();
 	
-	//return bp::object(neb::py::game::base(game));
-	return boost::python::object();
+	//return bp::object();
+	return boost::python::object(neb::py::game::game::Base(game));
 }
 boost::python::object			THIS::createSceneDLL(boost::python::object& o)
 {

@@ -68,10 +68,20 @@ bp::object		THIS::createWeaponSimpleProjectile(
 	// velocity
 	boost::python::extract<double> velocity_ex(velocity_obj);
 	assert(velocity_ex.check());
+
 	auto velocity = velocity_ex();
 
 	rigidactor->createWeaponSimpleProjectile(src, size, damage, velocity);
 
 	return boost::python::object();
 }
+void			THIS::export_class()
+{
+	typedef neb::py::core::actor::Base BASE;
+	auto c = boost::python::class_< THIS, boost::python::bases<BASE> >("Base");
+}
+
+
+
+
 

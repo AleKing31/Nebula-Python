@@ -5,14 +5,19 @@
 
 #include <neb/core/environ/util/decl.hpp>
 
+#include <neb/py/environ/util/decl.hpp>
+
 namespace neb { namespace py { namespace environ {
 	class Base {
 		public:
 			static void			export_class();
 			Base();
 			Base(std::weak_ptr<neb::fnd::environ::Base>);
-			boost::python::object		get_environ();
-		//private:
+			virtual ~Base();
+			boost::python::object		is_environ_three();
+			boost::python::object		is_environ_scene_base();
+			//std::auto_ptr<neb::py::environ::Three>	is_environ_three();
+	//private:
 			std::weak_ptr<neb::fnd::environ::Base>		environ_;
 	};
 }}}

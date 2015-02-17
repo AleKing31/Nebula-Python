@@ -39,7 +39,10 @@ void			THIS::createControlManual(
 }
 void			THIS::export_class()
 {
-	auto c = bp::class_<THIS>("rigiddynamic");
+	typedef neb::py::core::actor::rigidactor::base BASE;
+
+	auto c = bp::class_<THIS, boost::python::bases<BASE>>("rigiddynamic");
+	
 	c.def("createShapeCuboid", &neb::py::core::actor::rigidactor::base::createShapeCuboid);
 	c.def("createWeaponSimpleProjectile", &neb::py::core::actor::rigidactor::base::createWeaponSimpleProjectile);
 	c.def("createControlManual", &neb::py::core::actor::rigiddynamic::base::createControlManual);

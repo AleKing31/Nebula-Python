@@ -21,7 +21,6 @@ namespace neb { namespace py { namespace core { namespace scene {
 			bp::object		createActorRigidStaticCube(
 					boost::python::object& pose,
 					boost::python::object& size);
-		private:
 			std::weak_ptr<neb::fnd::core::scene::base>	scene_;
 	};
 }}}}

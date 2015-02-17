@@ -1,5 +1,7 @@
 #include <neb/core/context/Base.hpp>
+#include <neb/core/core/scene/base.hpp>
 
+#include <neb/py/core/scene/base.hpp>
 #include <neb/py/context/Base.hpp>
 #include <neb/py/environ/Base.hpp>
 
@@ -23,9 +25,25 @@ boost::python::object	THIS::get_environ()
 
 	return boost::python::object(e_py);
 }
+void		THIS::set_drawable(boost::python::object& drawable_object)
+{
+	auto c = context_.lock();
+
+
+	// drawable (a scene for now)
+	boost::python::extract<neb::py::core::scene::base&> drawable_extract(drawable_object);
+	assert(drawable_extract.check());
+
+	auto drawable_python = drawable_extract();
+	auto drawable = drawable_python.scene_.lock();
+	assert(drawable);
+
+	c->setDrawable(drawable);
+}
 void		THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
 	c.def("get_environ", &THIS::get_environ);
+	c.def("set_drawable", &THIS::set_drawable);
 }
 

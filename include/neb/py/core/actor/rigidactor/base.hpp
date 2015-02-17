@@ -2,21 +2,22 @@
 #define NEB_PY_CORE_ACTOR_RIGID_ACTOR_BASE
 
 #include <boost/python.hpp>
-namespace bp = boost::python;
 
 #include <neb/core/core/actor/util/decl.hpp>
 
+#include <neb/py/core/actor/Base.hpp>
 
 namespace neb { namespace py { namespace core { namespace actor { namespace rigidactor {
 
-	class base
+	class base:
+		virtual public neb::py::core::actor::Base
 	{
 		public:
 			typedef neb::fnd::core::actor::rigidactor::base CORE_TYPE;
-			//static void		export_class();
-			bp::object		createShapeCuboid(
+			static void			export_class();
+			boost::python::object		createShapeCuboid(
 					boost::python::object& desc);
-			bp::object		createWeaponSimpleProjectile(
+			boost::python::object		createWeaponSimpleProjectile(
 					boost::python::object& src_obj,
 					boost::python::object& size_obj,
 					boost::python::object& damage_obj,

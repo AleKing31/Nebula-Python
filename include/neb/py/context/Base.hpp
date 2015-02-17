@@ -12,6 +12,7 @@ namespace neb { namespace py { namespace context {
 			Base();
 			Base(std::weak_ptr<neb::fnd::context::Base>);
 			boost::python::object		get_environ();
+			void				set_drawable(boost::python::object& drawable_object);
 		//private:
 			std::weak_ptr<neb::fnd::context::Base>		context_;
 	};
