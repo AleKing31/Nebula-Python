@@ -15,7 +15,8 @@ namespace neb { namespace py { namespace game { namespace game {
 			static void			export_class();
 			Base();
 			Base(std::weak_ptr<CORE_TYPE>);
-			void				add_scene(boost::python::object& scene_object);
+			std::shared_ptr<CORE_TYPE>	get_game();
+			void				create_map(boost::python::object& scene_object);
 		protected:
 			std::weak_ptr<CORE_TYPE>		_M_game;
 	};

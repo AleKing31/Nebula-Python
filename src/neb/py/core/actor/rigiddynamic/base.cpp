@@ -14,7 +14,8 @@ THIS::base()
 	assert(0);
 }
 THIS::base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base> actor):
-	BASE(actor)
+	neb::py::core::actor::Base(actor),
+	neb::py::core::actor::rigidactor::base(actor)
 {
 	assert(actor.lock());
 }
