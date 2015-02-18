@@ -6,6 +6,7 @@
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/window/Base.hpp>
 
+typedef neb::py::core::actor::rigidactor::base BASE;
 typedef neb::py::core::actor::rigiddynamic::base THIS;
 
 THIS::base()
@@ -13,16 +14,14 @@ THIS::base()
 	assert(0);
 }
 THIS::base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base> actor):
-	neb::py::core::actor::rigidactor::base(actor),
-	actor_(actor)
+	BASE(actor)
 {
 	assert(actor.lock());
 }
 void			THIS::createControlManual(
 		boost::python::object& src_obj)
 {
-	auto rigidactor(rigidactor_.lock());
-	assert(rigidactor);
+	auto rigidactor = get_rigidactor();
 	auto rigidbody = std::dynamic_pointer_cast<neb::fnd::core::actor::rigidbody::base>(rigidactor);
 	assert(rigidbody);
 
@@ -41,7 +40,7 @@ void			THIS::export_class()
 {
 	typedef neb::py::core::actor::rigidactor::base BASE;
 
-	auto c = bp::class_<THIS, boost::python::bases<BASE>>("rigiddynamic");
+	auto c = boost::python::class_<THIS, boost::python::bases<BASE>>("rigiddynamic");
 	
 	c.def("createShapeCuboid", &neb::py::core::actor::rigidactor::base::createShapeCuboid);
 	c.def("createWeaponSimpleProjectile", &neb::py::core::actor::rigidactor::base::createWeaponSimpleProjectile);

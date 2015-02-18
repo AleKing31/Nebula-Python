@@ -15,6 +15,9 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 		public:
 			typedef neb::fnd::core::actor::rigidactor::base CORE_TYPE;
 			static void			export_class();
+			base();
+			base(std::weak_ptr<CORE_TYPE>);
+			std::shared_ptr<CORE_TYPE>	get_rigidactor();
 			boost::python::object		createShapeCuboid(
 					boost::python::object& desc);
 			boost::python::object		createWeaponSimpleProjectile(
@@ -22,13 +25,7 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 					boost::python::object& size_obj,
 					boost::python::object& damage_obj,
 					boost::python::object& velocity_obj);
-			base();
-			base(std::weak_ptr<CORE_TYPE>);
-		protected:
-			std::weak_ptr<CORE_TYPE>		rigidactor_;
 	};
 }}}}}
 
 #endif
-
-

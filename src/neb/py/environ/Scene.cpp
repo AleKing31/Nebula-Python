@@ -26,8 +26,9 @@ boost::python::object	THIS::create_view_ridealong(boost::python::object& actor_o
 	
 	auto actor_python = actor_extract();
 
-	auto actor = actor_python._M_actor;
+	auto actor = actor_python._M_actor.lock();
 	assert(actor);
+
 
 	e->create_view_ridealong(actor);
 
@@ -38,3 +39,4 @@ void		THIS::export_class()
 	auto c = boost::python::class_<THIS, boost::python::bases<neb::py::environ::Three>>("Scene");
 	c.def("create_view_ridealong", &THIS::create_view_ridealong);
 }
+

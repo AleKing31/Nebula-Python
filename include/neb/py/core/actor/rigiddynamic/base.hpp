@@ -3,8 +3,6 @@
 
 #include <boost/python.hpp>
 
-namespace bp = boost::python;
-
 #include <neb/core/core/actor/util/decl.hpp>
 
 #include <neb/py/core/actor/rigidactor/base.hpp>
@@ -15,16 +13,13 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 		public neb::py::core::actor::rigidactor::base
 	{
 		public:
-			static void		export_class();
+			static void			export_class();
 			base();
 			base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>);
-			void			createControlManual(
+			std::shared_ptr<CORE_TYPE>	get();
+			void				createControlManual(
 					boost::python::object& src_obj);
-		private:
-			std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>	actor_;
 	};
 }}}}}
 
 #endif
-
-

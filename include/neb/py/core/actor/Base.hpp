@@ -7,8 +7,11 @@ namespace neb { namespace py { namespace core { namespace actor {
 	class Base
 	{
 		public:
+			typedef neb::fnd::core::actor::base		CORE_TYPE;
+			Base();
+			Base(std::weak_ptr<CORE_TYPE> actor);
 			static void					export_class();
-			std::weak_ptr<neb::fnd::core::actor::base>	_M_actor;
+			std::weak_ptr<CORE_TYPE>			_M_actor;
 	};
 }}}}
 
