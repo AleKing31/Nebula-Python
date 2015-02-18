@@ -11,6 +11,7 @@
 #include <neb/py/core/shape/cuboid/Desc.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/game/game/Base.hpp>
+#include <neb/py/game/map/Base.hpp>
 #include <neb/py/util/config.hpp>
 
 /*
@@ -23,6 +24,7 @@
 #endif
 */
 
+class dummy_scene {};
 class dummy_shape {};
 class dummy_shape_cuboid {};
 class dummy_actor {};
@@ -33,23 +35,21 @@ class dummy_context {};
 class dummy_environ {};
 class dummy_game {};
 class dummy_game_game {};
+class dummy_game_map {};
 
 BOOST_PYTHON_MODULE(PY_LIB_NAME)
 {
 	export_pose();
-	export_scene();
 	neb::py::app::Base::export_class();
 
 	{
-		bp::scope scope_shape = bp::class_<dummy_shape>("shape");
+		// scene
+		bp::scope scope_scene = bp::class_<dummy_scene>("scene");
 
-		neb::py::core::shape::Base::export_class();
-
-		bp::scope scope_shape_cuboid = bp::class_<dummy_shape_cuboid>("cuboid");
-
-		neb::py::core::shape::cuboid::Desc::export_class();
+		neb::py::core::scene::base::export_class();
 	}
 	{
+		// actor
 		bp::scope scope_actor = bp::class_<dummy_actor>("actor");
 
 		neb::py::core::actor::Base::export_class();
@@ -66,6 +66,16 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 			neb::py::core::actor::rigiddynamic::base::export_class();
 		}
 
+	}
+	{
+		// shape
+		bp::scope scope_shape = bp::class_<dummy_shape>("shape");
+
+		neb::py::core::shape::Base::export_class();
+
+		bp::scope scope_shape_cuboid = bp::class_<dummy_shape_cuboid>("cuboid");
+
+		neb::py::core::shape::cuboid::Desc::export_class();
 	}
 	{
 		bp::scope scope_window = bp::class_<dummy_window>("window");
@@ -85,11 +95,19 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 		neb::py::environ::Scene::export_class();
 	}
 	{
+		// game
 		bp::scope scope_game = bp::class_<dummy_game>("game");
 		{
+			// game
 			bp::scope scope_game = bp::class_<dummy_game_game>("game");
 
 			neb::py::game::game::Base::export_class();
+		}
+		{
+			// map
+			bp::scope scope_game = bp::class_<dummy_game_map>("map");
+
+			neb::py::game::map::Base::export_class();
 		}
 	}
 }

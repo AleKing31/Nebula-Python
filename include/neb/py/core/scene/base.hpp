@@ -3,25 +3,24 @@
 
 #include <boost/python.hpp>
 
-namespace bp = boost::python;
-
 #include <neb/core/core/scene/util/decl.hpp>
 
-void		export_scene();
-
 namespace neb { namespace py { namespace core { namespace scene {
-
 	class base {
 		public:
+			static void		export_class();
+			typedef neb::fnd::core::scene::base FND_TYPE;
 			base();
-			base(std::weak_ptr<neb::fnd::core::scene::base>);
-			bp::object		createLightPoint();
-			bp::object		createActorRigidDynamic();
-			bp::object		createActorRigidDynamicCuboid();
-			bp::object		createActorRigidStaticCube(
+			base(std::weak_ptr<FND_TYPE>);
+			boost::python::object		createLightPoint();
+			boost::python::object		createActorRigidDynamic();
+			boost::python::object		createActorRigidDynamicCuboid();
+			boost::python::object		createActorRigidStaticCube(
 					boost::python::object& pose,
 					boost::python::object& size);
-			std::weak_ptr<neb::fnd::core::scene::base>	scene_;
+			std::shared_ptr<FND_TYPE>	get_scene();
+		private:
+			std::weak_ptr<FND_TYPE>		_M_scene;
 	};
 }}}}
 

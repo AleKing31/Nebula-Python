@@ -15,11 +15,13 @@
 typedef neb::py::core::scene::base THIS;
 
 THIS::base()
-{}
-THIS::base(std::weak_ptr<neb::fnd::core::scene::base> scene):
-	scene_(scene)
-{}
-bp::object		THIS::createActorRigidStaticCube(
+{
+}
+THIS::base(std::weak_ptr<THIS::FND_TYPE> scene):
+	_M_scene(scene)
+{
+}
+boost::python::object		THIS::createActorRigidStaticCube(
 		boost::python::object& pose_obj,
 		boost::python::object& size_obj)
 {
@@ -28,8 +30,7 @@ bp::object		THIS::createActorRigidStaticCube(
 
 	double size = bp::extract<double>(size_obj);
 
-	auto scene(scene_.lock());
-	assert(scene);
+	auto scene = get_scene();
 
 	auto actor = std::dynamic_pointer_cast<neb::fnd::core::actor::rigidstatic::base>(scene->createActorRigidStaticCube(pose, size).lock());
 	
@@ -39,8 +40,7 @@ bp::object		THIS::createActorRigidStaticCube(
 }
 bp::object		THIS::createActorRigidDynamic()
 {
-	auto scene(scene_.lock());
-	assert(scene);
+	auto scene = get_scene();
 	
 	auto actor = std::dynamic_pointer_cast<neb::fnd::core::actor::rigiddynamic::base>(scene->createActorRigidDynamic().lock());
 
@@ -52,8 +52,7 @@ bp::object		THIS::createActorRigidDynamic()
 }
 bp::object		THIS::createLightPoint()
 {
-	auto scene(scene_.lock());
-	assert(scene);
+	auto scene = get_scene();
 
 	scene->createActorLightPoint(glm::vec3()).lock();
 	
@@ -61,10 +60,12 @@ bp::object		THIS::createLightPoint()
 }
 bp::object		THIS::createActorRigidDynamicCuboid()
 {
-	auto scene(scene_.lock());
+	auto scene = get_scene();
 	assert(scene);
 
 	neb::fnd::core::actor::rigidbody::desc ad;
+	//ad.pose.pos_.z = -20;
+
 	neb::fnd::core::shape::cuboid::Desc sd;
 	
 	auto actor_fnd = scene->createActorRigidDynamicCuboid(ad, sd).lock();
@@ -77,7 +78,13 @@ bp::object		THIS::createActorRigidDynamicCuboid()
 
 	return bp::object(py_actor);
 }
-void		export_scene()
+std::shared_ptr<THIS::FND_TYPE>	THIS::get_scene()
+{
+	auto s = _M_scene.lock();
+	assert(s);
+	return s;
+}
+void				THIS::export_class()
 {
 	auto c = bp::class_<neb::py::core::scene::base>("scene");
 	c.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);

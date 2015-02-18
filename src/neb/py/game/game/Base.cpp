@@ -1,7 +1,11 @@
+#include <cstdio>
+
 #include <neb/core/game/game/base.hpp>
 #include <neb/core/game/map/base.hpp>
 
 #include <neb/py/game/game/Base.hpp>
+#include <neb/py/game/map/Base.hpp>
+#include <neb/py/core/scene/base.hpp>
 
 typedef neb::py::game::game::Base THIS;
 
@@ -18,18 +22,23 @@ std::shared_ptr<THIS::CORE_TYPE>	THIS::get_game()
 	assert(g);
 	return g;
 }
-void			THIS::create_map(boost::python::object& scene_object)
+boost::python::object			THIS::create_map_dll(boost::python::object& o)
 {
+	//auto app = neb::fnd::app::Base::global();
 	auto game = get_game();
-	
-	typedef neb::fnd::game::map::Base M;
 
-	auto map = game->create<M>().lock();
+	// extract string
+	char* s = boost::python::extract<char*>(o);
+	std::string str(s);
+
+	auto map = game->create_map_dll(str);
+
+	return boost::python::object(neb::py::game::map::Base(map));
 }
 void			THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
-	c.def("add_scene", &THIS::add_scene);
+	c.def("create_map_dll", &THIS::create_map_dll);
 }
 
 

@@ -99,7 +99,7 @@ boost::python::list			THIS::get_windows()
 	
 	return l;
 }
-boost::python::object			THIS::createScene()
+boost::python::object			THIS::create_scene()
 {
 	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
@@ -118,19 +118,6 @@ boost::python::object			THIS::createGame()
 	//return bp::object();
 	return boost::python::object(neb::py::game::game::Base(game));
 }
-boost::python::object			THIS::createSceneDLL(boost::python::object& o)
-{
-	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
-	
-	char* s = bp::extract<char*>(o);
-
-	std::string str(s);
-
-	auto scene = app->createSceneDLL(str);
-
-	return bp::object(neb::py::core::scene::base(scene));
-}
 void					THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
@@ -138,8 +125,7 @@ void					THIS::export_class()
 	c.def("createWindow",	&THIS::createWindow);
 	c.def("createLayout",	&THIS::createLayout);
 	c.def("createGame",	&THIS::createGame);
-	c.def("createScene",	&THIS::createScene);
-	c.def("createSceneDLL",	&THIS::createSceneDLL);
+	c.def("create_scene",	&THIS::create_scene);
 	c.def("getScenes",	&THIS::getScenes);
 	c.def("get_windows",	&THIS::get_windows);
 

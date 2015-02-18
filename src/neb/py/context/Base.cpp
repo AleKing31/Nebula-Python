@@ -35,8 +35,8 @@ void		THIS::set_drawable(boost::python::object& drawable_object)
 	assert(drawable_extract.check());
 
 	auto drawable_python = drawable_extract();
-	auto drawable = drawable_python.scene_.lock();
-	assert(drawable);
+
+	auto drawable = drawable_python.get_scene();
 
 	c->setDrawable(drawable);
 }
