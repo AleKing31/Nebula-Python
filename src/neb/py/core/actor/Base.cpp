@@ -17,4 +17,10 @@ THIS::Base(std::weak_ptr<CORE_TYPE> actor):
 {
 	assert(actor.lock());
 }
+std::shared_ptr<THIS::CORE_TYPE>	THIS::get_actor()
+{
+	auto a = _M_actor.lock();
+	assert(a);
+	return a;
+}
 

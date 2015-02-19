@@ -10,6 +10,7 @@ namespace neb { namespace py { namespace core { namespace actor {
 			typedef neb::fnd::core::actor::base		CORE_TYPE;
 			Base();
 			Base(std::weak_ptr<CORE_TYPE> actor);
+			std::shared_ptr<CORE_TYPE>			get_actor();
 			static void					export_class();
 			std::weak_ptr<CORE_TYPE>			_M_actor;
 	};

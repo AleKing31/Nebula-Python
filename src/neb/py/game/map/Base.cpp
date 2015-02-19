@@ -1,5 +1,6 @@
 #include <neb/core/game/map/base.hpp>
 
+#include <neb/py/core/actor/Base.hpp>
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/game/map/Base.hpp>
 
@@ -36,9 +37,23 @@ void			THIS::set_scene(boost::python::object& scene_object)
 
 	map->setup();
 }
+void			THIS::spawn_actor(boost::python::object& actor_object)
+{
+	// get scene
+	boost::python::extract<neb::py::core::actor::Base&> actor_extract(actor_object);
+	assert(actor_extract.check());
+
+	auto actor_python = actor_extract();
+
+	auto actor = actor_python.get_actor();
+
+	// do stuff
+	get_map()->spawn_actor(actor);
+}
 void			THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
 	c.def("set_scene", &THIS::set_scene);
+	c.def("spawn_actor", &THIS::spawn_actor);
 }
 
