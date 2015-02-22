@@ -19,7 +19,10 @@ boost::python::object	THIS::get_environ()
 	auto c(context_.lock());
 	assert(c);
 	
-	auto e = c->get_environ();
+	
+	//auto e = c->get_environ();
+	auto e = c->neb::fnd::environ::util::Parent::front();
+
 
 	neb::py::environ::Base e_py(e);
 
