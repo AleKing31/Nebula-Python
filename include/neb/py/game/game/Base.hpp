@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/game/game/util/decl.hpp>
+#include <neb/fnd/game/game/util/decl.hpp>
 
 //#include <neb/py/core/actor/Base.hpp>
 

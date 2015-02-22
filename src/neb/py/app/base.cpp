@@ -1,8 +1,8 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/app/Base.hpp>
-//#include <neb/core/app/__core.hpp>
+#include <neb/fnd/app/Base.hpp>
+//#include <neb/fnd/app/__core.hpp>
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/app/base.hpp>

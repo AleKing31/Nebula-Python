@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/math/pose.hpp>
+#include <neb/fnd/math/pose.hpp>
 
 namespace bp = boost::python;
 

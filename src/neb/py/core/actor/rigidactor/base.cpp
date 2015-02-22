@@ -1,6 +1,6 @@
-#include <neb/core/core/actor/rigidactor/base.hpp>
-#include <neb/core/core/shape/base.hpp>
-#include <neb/core/window/Base.hpp>
+#include <neb/fnd/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/shape/base.hpp>
+#include <neb/fnd/window/Base.hpp>
 
 #include <neb/py/core/actor/rigidactor/base.hpp>
 #include <neb/py/core/shape/cuboid/Desc.hpp>

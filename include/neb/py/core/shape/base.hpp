@@ -4,7 +4,7 @@
 #include <boost/python.hpp>
 namespace bp = boost::python;
 
-#include <neb/core/core/shape/util/decl.hpp>
+#include <neb/fnd/core/shape/util/decl.hpp>
 
 namespace neb { namespace py { namespace core { namespace shape {
 	class Base

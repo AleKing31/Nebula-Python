@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/core/scene/util/decl.hpp>
+#include <neb/fnd/core/scene/util/decl.hpp>
 
 namespace neb { namespace py { namespace core { namespace scene {
 	class base {

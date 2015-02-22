@@ -1,7 +1,7 @@
 #include <cstdio>
 
-#include <neb/core/game/game/base.hpp>
-#include <neb/core/game/map/base.hpp>
+#include <neb/fnd/game/game/base.hpp>
+#include <neb/fnd/game/map/base.hpp>
 
 #include <neb/py/game/game/Base.hpp>
 #include <neb/py/game/map/Base.hpp>

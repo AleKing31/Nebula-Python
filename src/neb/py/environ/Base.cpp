@@ -1,6 +1,6 @@
-#include <neb/core/environ/Base.hpp>
-#include <neb/core/environ/Three.hpp>
-#include <neb/core/environ/SceneDefault.hpp>
+#include <neb/fnd/environ/Base.hpp>
+#include <neb/fnd/environ/Three.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
 
 #include <neb/py/environ/Base.hpp>
 #include <neb/py/environ/Three.hpp>

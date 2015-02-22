@@ -1,5 +1,5 @@
 
-#include <neb/core/core/actor/rigidstatic/base.hpp>
+#include <neb/fnd/core/actor/rigidstatic/base.hpp>
 
 #include <neb/py/core/actor/rigidstatic/base.hpp>
 

@@ -1,7 +1,7 @@
 #include <cassert>
 
-#include <neb/core/core/actor/rigiddynamic/base.hpp>
-#include <neb/core/window/Base.hpp>
+#include <neb/fnd/core/actor/rigiddynamic/base.hpp>
+#include <neb/fnd/window/Base.hpp>
 
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/window/Base.hpp>

@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/environ/util/decl.hpp>
+#include <neb/fnd/environ/util/decl.hpp>
 
 #include <neb/py/environ/Base.hpp>
 

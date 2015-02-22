@@ -1,7 +1,7 @@
 #ifndef NEB_PY_CORE_ACTOR_RIGIDDYNAMIC_DESC_HPP
 #define NEB_PY_CORE_ACTOR_RIGIDDYNAMIC_DESC_HPP
 
-#include <neb/core/core/actor/util/decl.hpp>
+#include <neb/fnd/core/actor/util/decl.hpp>
 
 namespace neb { namespace py { namespace core { namespace actor { namespace rigiddynamic {
 	class Desc

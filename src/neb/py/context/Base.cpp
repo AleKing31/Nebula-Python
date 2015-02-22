@@ -1,5 +1,5 @@
-#include <neb/core/context/Base.hpp>
-#include <neb/core/core/scene/base.hpp>
+#include <neb/fnd/context/Base.hpp>
+#include <neb/fnd/core/scene/base.hpp>
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/context/Base.hpp>

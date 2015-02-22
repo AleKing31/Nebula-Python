@@ -1,5 +1,5 @@
-#include <neb/core/context/Window.hpp>
-#include <neb/core/window/Base.hpp>
+#include <neb/fnd/context/Window.hpp>
+#include <neb/fnd/window/Base.hpp>
 
 #include <neb/py/context/Base.hpp>
 #include <neb/py/window/Base.hpp>

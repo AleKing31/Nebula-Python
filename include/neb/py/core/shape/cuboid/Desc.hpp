@@ -1,7 +1,7 @@
 #ifndef NEB_PY_CORE_SHAPE_CUBOID_DESC_HPP
 #define NEB_PY_CORE_SHAPE_CUBOID_DESC_HPP
 
-#include <neb/core/core/shape/cuboid/desc.hpp>
+#include <neb/fnd/core/shape/cuboid/desc.hpp>
 
 void export_shape_cuboid_desc();
 

@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/core/actor/util/decl.hpp>
+#include <neb/fnd/core/actor/util/decl.hpp>
 #include <neb/py/core/actor/rigidactor/base.hpp>
 
 namespace neb { namespace py { namespace core { namespace actor { namespace rigidstatic {

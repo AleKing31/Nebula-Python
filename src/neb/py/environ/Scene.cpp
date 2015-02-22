@@ -1,4 +1,4 @@
-#include <neb/core/environ/SceneDefault.hpp>
+#include <neb/fnd/environ/SceneDefault.hpp>
 
 #include <neb/py/environ/Scene.hpp>
 #include <neb/py/core/actor/Base.hpp>

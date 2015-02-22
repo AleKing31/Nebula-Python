@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/core/game/map/util/decl.hpp>
+#include <neb/fnd/game/map/util/decl.hpp>
 
 namespace neb { namespace py { namespace game { namespace map {
 	class Base

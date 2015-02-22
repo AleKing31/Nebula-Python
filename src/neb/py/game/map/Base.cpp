@@ -1,4 +1,4 @@
-#include <neb/core/game/map/base.hpp>
+#include <neb/fnd/game/map/base.hpp>
 
 #include <neb/py/core/actor/Base.hpp>
 #include <neb/py/core/scene/base.hpp>
