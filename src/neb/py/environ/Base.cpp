@@ -1,7 +1,9 @@
 #include <neb/fnd/environ/Base.hpp>
 #include <neb/fnd/environ/Three.hpp>
 #include <neb/fnd/environ/SceneDefault.hpp>
+#include <neb/fnd/core/scene/base.hpp>
 
+#include <neb/py/core/scene/base.hpp>
 #include <neb/py/environ/Base.hpp>
 #include <neb/py/environ/Three.hpp>
 #include <neb/py/environ/Scene.hpp>
@@ -42,6 +44,21 @@ boost::python::object		THIS::is_environ_scene_base()
 	}
 	return boost::python::object();
 }
+void		THIS::set_drawable(boost::python::object& drawable_object)
+{
+	auto e = environ_.lock();
+
+	// drawable (a scene for now)
+	boost::python::extract<neb::py::core::scene::base&> drawable_extract(drawable_object);
+	assert(drawable_extract.check());
+
+	auto drawable_python = drawable_extract();
+
+	auto drawable = drawable_python.get_scene();
+
+	e->set_drawable(drawable);
+}
+
 void		THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");

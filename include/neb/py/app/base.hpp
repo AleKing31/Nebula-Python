@@ -16,7 +16,7 @@ namespace neb { namespace py { namespace app {
 			boost::python::object			createGame();
 			boost::python::object			createLayout(
 					boost::python::object& window,
-					boost::python::object& context);
+					boost::python::object& environ);
 			boost::python::object			create_scene();
 			//boost::python::object			create_map_dll(boost::python::object&);
 			boost::python::list			getScenes();

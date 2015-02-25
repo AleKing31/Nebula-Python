@@ -12,7 +12,7 @@ namespace neb { namespace py { namespace window {
 			static void				export_class();
 			Base();
 			Base(std::weak_ptr<neb::fnd::window::Base>);
-			boost::python::object			createContextThree();
+			boost::python::object			createContextWindow();
 			std::shared_ptr<T>			get_window();
 		//private:
 			std::weak_ptr<T>			window_;

@@ -9,6 +9,7 @@
 #include <neb/py/game/game/Base.hpp>
 #include <neb/py/window/Base.hpp>
 #include <neb/py/context/Base.hpp>
+#include <neb/py/environ/Base.hpp>
 #include <neb/py/gui/layout/Base.hpp>
 //#include <neb/py/game/game/Base.hpp>
 
@@ -35,7 +36,7 @@ boost::python::object			THIS::createWindow()
 }
 boost::python::object			THIS::createLayout(
 		boost::python::object& window_obj,
-		boost::python::object& context_obj)
+		boost::python::object& environ_obj)
 {
 	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
@@ -48,16 +49,16 @@ boost::python::object			THIS::createLayout(
 	auto window = window_py.get_window();
 	assert(window);
 
-	// context
-	auto context_ex = boost::python::extract<neb::py::context::Base&>(context_obj);
-	assert(context_ex.check());
-	auto context_py = context_ex();
+	// environ
+	auto environ_ex = boost::python::extract<neb::py::environ::Base&>(environ_obj);
+	assert(environ_ex.check());
+	auto environ_py = environ_ex();
 
-	auto context = context_py.context_.lock();
-	assert(context);
+	auto environ = environ_py.environ_.lock();
+	assert(environ);
 
 
-	auto layout = app->createLayout(window, context);
+	auto layout = app->createLayout(window, environ /*context*/);
 	
 	neb::py::gui::layout::Base layout_py(layout);
 

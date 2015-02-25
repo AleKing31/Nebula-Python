@@ -21,7 +21,10 @@ std::shared_ptr<THIS::CORE_TYPE>	THIS::get_map()
 }
 void			THIS::set_scene(boost::python::object& scene_object)
 {
+	printf("%s\n", __PRETTY_FUNCTION__);
+
 	// get scene
+	printf("get scene\n");
 	boost::python::extract<neb::py::core::scene::base&> scene_extract(scene_object);
 	assert(scene_extract.check());
 
@@ -29,12 +32,16 @@ void			THIS::set_scene(boost::python::object& scene_object)
 
 	auto scene = scene_python.get_scene();
 
+
 	// get map
+	printf("get map\n");
 	auto map = get_map();
 
 	// do stuff
+	printf("set scene\n");
 	map->set_scene(scene);
 
+	printf("setup\n");
 	map->setup();
 }
 void			THIS::spawn_actor(boost::python::object& actor_object)

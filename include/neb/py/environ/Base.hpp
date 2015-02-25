@@ -16,6 +16,7 @@ namespace neb { namespace py { namespace environ {
 			virtual ~Base();
 			boost::python::object		is_environ_three();
 			boost::python::object		is_environ_scene_base();
+			void				set_drawable(boost::python::object& drawable_object);
 			//std::auto_ptr<neb::py::environ::Three>	is_environ_three();
 	//private:
 			std::weak_ptr<neb::fnd::environ::Base>		environ_;
