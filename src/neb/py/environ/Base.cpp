@@ -62,6 +62,7 @@ void		THIS::set_drawable(boost::python::object& drawable_object)
 void		THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
+	c.def("set_drawable", &THIS::set_drawable);
 	c.def("is_environ_three", &THIS::is_environ_three);
 	c.def("is_environ_scene_base", &THIS::is_environ_scene_base);
 }

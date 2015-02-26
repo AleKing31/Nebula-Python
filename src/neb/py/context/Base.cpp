@@ -5,6 +5,7 @@
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/context/Base.hpp>
 #include <neb/py/environ/Base.hpp>
+#include <neb/py/environ/Scene.hpp>
 
 typedef neb::py::context::Base THIS;
 
@@ -43,7 +44,7 @@ boost::python::object		THIS::create_environ_scene_default()
 
 	auto e = c->createEnvironSceneDefault().lock();
 
-	neb::py::environ::Base e_py(e);
+	neb::py::environ::Scene e_py(e);
 
 	return boost::python::object(e_py);
 }
