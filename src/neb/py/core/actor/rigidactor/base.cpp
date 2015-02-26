@@ -1,4 +1,4 @@
-#include <neb/fnd/core/actor/rigidactor/base.hpp>
+#include <neb/fnd/core/actor/rigidactor/Base.hpp>
 #include <neb/fnd/core/shape/base.hpp>
 #include <neb/fnd/window/Base.hpp>
 

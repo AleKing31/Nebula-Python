@@ -2,11 +2,10 @@
 #include <boost/python.hpp>
 
 #include <neb/fnd/math/pose.hpp>
-#include <neb/fnd/core/actor/rigiddynamic/base.hpp>
+#include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/core/actor/rigidstatic/base.hpp>
-#include <neb/fnd/core/scene/base.hpp>
-
+#include <neb/fnd/core/scene/Base.hpp>
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/core/actor/rigidstatic/base.hpp>
