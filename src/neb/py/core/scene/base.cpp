@@ -1,7 +1,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 #include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
 #include <neb/fnd/core/actor/rigidbody/desc.hpp>
 #include <neb/fnd/core/actor/rigidstatic/base.hpp>
@@ -24,8 +24,8 @@ boost::python::object		THIS::createActorRigidStaticCube(
 		boost::python::object& pose_obj,
 		boost::python::object& size_obj)
 {
-	//	auto pose = boost::python::extract<neb::fnd::math::pose&>(pose_obj);
-	neb::fnd::math::pose pose;
+	//	auto pose = boost::python::extract<gal::math::pose&>(pose_obj);
+	gal::math::pose pose;
 
 	double size = bp::extract<double>(size_obj);
 

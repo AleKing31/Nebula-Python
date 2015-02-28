@@ -3,7 +3,7 @@
 
 #include <boost/python.hpp>
 
-#include <neb/fnd/math/pose.hpp>
+#include <gal/math/pose.hpp>
 
 namespace bp = boost::python;
 
@@ -11,7 +11,7 @@ void	export_pose();
 
 namespace neb { namespace py { namespace math {
 
-	class pose: public neb::fnd::math::pose {
+	class pose: public gal::math::pose {
 		public:
 			bp::list	getPos();
 	};
