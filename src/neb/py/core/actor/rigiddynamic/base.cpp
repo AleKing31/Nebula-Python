@@ -34,7 +34,6 @@ void			THIS::createControlManual(
 	auto src = src_py.window_.lock();
 	assert(src);
 
-
 	rigidbody->createControlManual(src);
 }
 void			THIS::export_class()
