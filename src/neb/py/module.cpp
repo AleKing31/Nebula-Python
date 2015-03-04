@@ -10,7 +10,10 @@
 #include <neb/py/core/shape/base.hpp>
 #include <neb/py/core/shape/cuboid/Desc.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
+
+#include <neb/py/game/game/Desc.hpp>
 #include <neb/py/game/game/Base.hpp>
+
 #include <neb/py/game/map/Base.hpp>
 #include <neb/py/util/config.hpp>
 
@@ -103,6 +106,7 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 			// game
 			bp::scope scope_game = bp::class_<dummy_game_game>("game");
 
+			neb::py::game::game::Desc::export_class();
 			neb::py::game::game::Base::export_class();
 		}
 		{

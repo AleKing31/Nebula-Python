@@ -13,7 +13,8 @@ namespace neb { namespace py { namespace app {
 			Base();
 			Base(std::shared_ptr<neb::fnd::app::Base> app);
 			boost::python::object			createWindow();
-			boost::python::object			createGame();
+			boost::python::object			createGame(
+					boost::python::object desc_obj);
 			boost::python::object			createLayout(
 					boost::python::object& window,
 					boost::python::object& environ);

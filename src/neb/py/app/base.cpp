@@ -6,7 +6,10 @@
 
 #include <neb/py/core/scene/base.hpp>
 #include <neb/py/app/base.hpp>
+
 #include <neb/py/game/game/Base.hpp>
+#include <neb/py/game/game/Desc.hpp>
+
 #include <neb/py/window/Base.hpp>
 #include <neb/py/context/Base.hpp>
 #include <neb/py/environ/Base.hpp>
@@ -109,12 +112,18 @@ boost::python::object			THIS::create_scene()
 
 	return bp::object(neb::py::core::scene::base(scene));
 }
-boost::python::object			THIS::createGame()
+boost::python::object			THIS::createGame(boost::python::object desc_obj)
 {
+	// desc
+	auto desc_ex = boost::python::extract<neb::py::game::game::Desc&>(desc_obj);
+	assert(desc_ex.check());
+	auto desc_py = desc_ex();
+
+
 	//auto app = neb::fnd::app::Base::global();
 	auto app = _M_weak_app.lock();
 	
-	auto game = app->createGame();
+	auto game = app->createGame(desc_py);
 	
 	//return bp::object();
 	return boost::python::object(neb::py::game::game::Base(game));
