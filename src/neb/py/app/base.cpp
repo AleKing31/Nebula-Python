@@ -119,6 +119,14 @@ boost::python::object			THIS::createGame()
 	//return bp::object();
 	return boost::python::object(neb::py::game::game::Base(game));
 }
+boost::python::object			get_app()
+{
+	auto app = neb::fnd::app::Base::global();
+
+	THIS app_py(app);
+
+	return boost::python::object(app_py);
+}
 void					THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
@@ -129,6 +137,8 @@ void					THIS::export_class()
 	c.def("create_scene",	&THIS::create_scene);
 	c.def("getScenes",	&THIS::getScenes);
 	c.def("get_windows",	&THIS::get_windows);
+	
+	def("get_app",	get_app);
 
 	//boost::python::class_<neb::py::app::base>("App");
 	//	.def("createActorRigidStaticCube", &neb::py::core::scene::base::createActorRigidStaticCube);

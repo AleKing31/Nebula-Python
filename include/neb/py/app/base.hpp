@@ -22,6 +22,7 @@ namespace neb { namespace py { namespace app {
 			boost::python::list			getScenes();
 			boost::python::list			get_windows();
 			static void				export_class();
+			//static boost::python::object		get_app();
 		private:
 			std::weak_ptr<neb::fnd::app::Base>	_M_weak_app;
 	};

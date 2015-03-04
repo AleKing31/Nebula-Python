@@ -42,6 +42,8 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 	export_pose();
 	neb::py::app::Base::export_class();
 
+	
+
 	{
 		// scene
 		bp::scope scope_scene = bp::class_<dummy_scene>("scene");
