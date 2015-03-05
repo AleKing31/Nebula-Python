@@ -19,31 +19,6 @@ std::shared_ptr<THIS::CORE_TYPE>	THIS::get_map()
 	assert(g);
 	return g;
 }
-void			THIS::set_scene(boost::python::object& scene_object)
-{
-	printf("%s\n", __PRETTY_FUNCTION__);
-
-	// get scene
-	printf("get scene\n");
-	boost::python::extract<neb::py::core::scene::base&> scene_extract(scene_object);
-	assert(scene_extract.check());
-
-	auto scene_python = scene_extract();
-
-	auto scene = scene_python.get_scene();
-
-
-	// get map
-	printf("get map\n");
-	auto map = get_map();
-
-	// do stuff
-	printf("set scene\n");
-	map->set_scene(scene);
-
-	printf("setup\n");
-	map->setup();
-}
 void			THIS::spawn_actor(boost::python::object& actor_object)
 {
 	// get scene
@@ -57,10 +32,37 @@ void			THIS::spawn_actor(boost::python::object& actor_object)
 	// do stuff
 	get_map()->spawn_actor(actor);
 }
+boost::python::list			THIS::getScenes()
+{
+	boost::python::list l;
+
+	auto map = get_map();
+	
+	neb::fnd::core::scene::util::parent & p = *map;
+	
+	for(auto it : p)
+	{
+		neb::py::core::scene::base ps(it.second.ptr_);
+		//ps.scene_ = scene;
+		l.append(ps);
+	}
+	
+	return l;
+}
+boost::python::object			THIS::create_scene()
+{
+	//auto app = neb::fnd::app::Base::global();
+	auto map = get_map();
+	
+	auto scene = map->createScene();
+
+	return boost::python::object(neb::py::core::scene::base(scene));
+}
 void			THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
-	c.def("set_scene", &THIS::set_scene);
 	c.def("spawn_actor", &THIS::spawn_actor);
+	c.def("create_scene",	&THIS::create_scene);
+	c.def("getScenes",	&THIS::getScenes);
 }
 

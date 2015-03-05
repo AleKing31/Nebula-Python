@@ -67,24 +67,6 @@ boost::python::object			THIS::createLayout(
 
 	return boost::python::object(layout_py);
 }
-boost::python::list			THIS::getScenes()
-{
-	boost::python::list l;
-
-	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
-	
-	neb::fnd::core::scene::util::parent & p = *app;
-	
-	for(auto it : p)
-	{
-		neb::py::core::scene::base ps(it.second.ptr_);
-		//ps.scene_ = scene;
-		l.append(ps);
-	}
-	
-	return l;
-}
 boost::python::list			THIS::get_windows()
 {
 	boost::python::list l;
@@ -102,15 +84,6 @@ boost::python::list			THIS::get_windows()
 	}
 	
 	return l;
-}
-boost::python::object			THIS::create_scene()
-{
-	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
-	
-	auto scene = app->createScene();
-
-	return bp::object(neb::py::core::scene::base(scene));
 }
 boost::python::object			THIS::createGame(boost::python::object desc_obj)
 {
@@ -143,8 +116,6 @@ void					THIS::export_class()
 	c.def("createWindow",	&THIS::createWindow);
 	c.def("createLayout",	&THIS::createLayout);
 	c.def("createGame",	&THIS::createGame);
-	c.def("create_scene",	&THIS::create_scene);
-	c.def("getScenes",	&THIS::getScenes);
 	c.def("get_windows",	&THIS::get_windows);
 	
 	def("get_app",	get_app);

@@ -18,12 +18,8 @@ namespace neb { namespace py { namespace app {
 			boost::python::object			createLayout(
 					boost::python::object& window,
 					boost::python::object& environ);
-			boost::python::object			create_scene();
-			//boost::python::object			create_map_dll(boost::python::object&);
-			boost::python::list			getScenes();
 			boost::python::list			get_windows();
 			static void				export_class();
-			//static boost::python::object		get_app();
 		private:
 			std::weak_ptr<neb::fnd::app::Base>	_M_weak_app;
 	};

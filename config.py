@@ -63,10 +63,10 @@ l = Dynamic("nebula_python")
 
 l.inc_dirs.append("/usr/include/python2.7")
 
-l.require("galaxy_std")
+l.require("galaxy_std", whole=True)
 l.require("galaxy_log")
 l.require("galaxy_console")
-l.require("nebula_core")
+l.require("nebula_core", whole=True)
 l.require("boost_serialization")
 l.require("boost_python")
 l.require("boost_thread")
