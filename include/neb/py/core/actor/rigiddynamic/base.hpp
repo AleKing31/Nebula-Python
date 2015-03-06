@@ -5,6 +5,7 @@
 
 #include <neb/fnd/core/actor/util/decl.hpp>
 
+#include <neb/py/core/actor/control/rigidbody/Base.hpp>
 #include <neb/py/core/actor/rigidactor/base.hpp>
 
 namespace neb { namespace py { namespace core { namespace actor { namespace rigiddynamic {
@@ -17,7 +18,7 @@ namespace neb { namespace py { namespace core { namespace actor { namespace rigi
 			base();
 			base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base>);
 			std::shared_ptr<CORE_TYPE>	get();
-			void				createControlManual(
+			neb::py::core::actor::control::rigidbody::Base		createControlManual(
 					boost::python::object& src_obj);
 	};
 }}}}}

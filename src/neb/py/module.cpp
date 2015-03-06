@@ -10,6 +10,7 @@
 #include <neb/py/core/shape/base.hpp>
 #include <neb/py/core/shape/cuboid/Desc.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
+#include <neb/py/core/actor/control/rigidbody/Base.hpp>
 
 #include <neb/py/game/game/Desc.hpp>
 #include <neb/py/game/game/Base.hpp>
@@ -33,6 +34,8 @@ class dummy_shape_cuboid {};
 class dummy_actor {};
 class dummy_actor_rigidactor {};
 class dummy_actor_rigiddynamic {};
+class dummy_actor_control {};
+class dummy_actor_control_rigidbody {};
 class dummy_window {};
 class dummy_context {};
 class dummy_environ {};
@@ -71,6 +74,16 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 			neb::py::core::actor::rigiddynamic::base::export_class();
 		}
 
+		{
+			// control
+			bp::scope scope_actor_control = bp::class_<dummy_actor_control>("control");
+			{
+				// rigidbody
+				bp::scope scope_actor_control_rigidbody = bp::class_<dummy_actor_control_rigidbody>("rigidbody");
+
+				neb::py::core::actor::control::rigidbody::Base::export_class();
+			}
+		}
 	}
 	{
 		// shape

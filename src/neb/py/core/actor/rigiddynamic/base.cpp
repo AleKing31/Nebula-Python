@@ -3,6 +3,7 @@
 #include <neb/fnd/core/actor/rigiddynamic/Base.hpp>
 #include <neb/fnd/window/Base.hpp>
 
+#include <neb/py/core/actor/control/rigidbody/Base.hpp>
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/window/Base.hpp>
 
@@ -19,7 +20,7 @@ THIS::base(std::weak_ptr<neb::fnd::core::actor::rigiddynamic::base> actor):
 {
 	assert(actor.lock());
 }
-void			THIS::createControlManual(
+neb::py::core::actor::control::rigidbody::Base		THIS::createControlManual(
 		boost::python::object& src_obj)
 {
 	auto rigidactor = get_rigidactor();
@@ -34,7 +35,9 @@ void			THIS::createControlManual(
 	auto src = src_py.window_.lock();
 	assert(src);
 
-	rigidbody->createControlManual(src);
+	auto control = rigidbody->createControlManual(src).lock();
+
+	return neb::py::core::actor::control::rigidbody::Base(control);
 }
 void			THIS::export_class()
 {
