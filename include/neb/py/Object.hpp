@@ -1,6 +1,8 @@
 #ifndef NEB_PY_OBJECT_HPP
 #define NEB_PY_OBJECT_HPP
 
+#include <memory>
+
 namespace neb { namespace py {
 	template<typename T>
 	class Object

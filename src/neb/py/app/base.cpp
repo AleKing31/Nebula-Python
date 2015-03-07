@@ -109,6 +109,15 @@ boost::python::object			get_app()
 
 	return boost::python::object(app_py);
 }
+neb::py::input::js			THIS::get_joystick(int i)
+{
+	auto app = _M_weak_app.lock();
+	assert(app);
+
+	auto j = app->get_joystick(i);
+
+	return neb::py::input::js(j);
+}
 void					THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
@@ -117,7 +126,8 @@ void					THIS::export_class()
 	c.def("createLayout",	&THIS::createLayout);
 	c.def("createGame",	&THIS::createGame);
 	c.def("get_windows",	&THIS::get_windows);
-	
+	c.def("get_joystick",	&THIS::get_joystick);
+
 	def("get_app",	get_app);
 
 	//boost::python::class_<neb::py::app::base>("App");

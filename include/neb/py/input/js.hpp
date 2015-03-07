@@ -10,10 +10,11 @@ namespace neb { namespace py { namespace input {
 		public neb::py::Object<neb::fnd::input::js>
 	{
 		public:
-			typedef neb::py::Object<neb::fnd::input::source> O;
+			typedef neb::py::Object<neb::fnd::input::js> O;
 			js();
 			js(S s);
 	};
 }}}
 
 #endif
+
