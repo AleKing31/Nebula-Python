@@ -127,11 +127,22 @@ boost::python::object			THIS::create_server(int portno)
 
 	return boost::python::object();
 }
+boost::python::object			THIS::create_client(
+		std::string ip,
+		int portno)
+{
+	auto a = get_object();
+
+	auto s = a->create_client(ip, portno);
+
+	return boost::python::object();
+}
 void					THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
 	
 	c.def("create_server",	&THIS::create_server);
+	c.def("create_client",	&THIS::create_client);
 	c.def("createWindow",	&THIS::createWindow);
 	c.def("createLayout",	&THIS::createLayout);
 	c.def("createGame",	&THIS::createGame);

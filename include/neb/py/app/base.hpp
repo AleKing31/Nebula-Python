@@ -12,20 +12,25 @@ namespace neb { namespace py { namespace app {
 	class Base:
 		public neb::py::Object<neb::fnd::app::Base>
 	{
-		public:
-			typedef neb::py::Object<neb::fnd::app::Base> O;
-			Base();
-			Base(S app);
-			boost::python::object			create_server(int portno);
-			boost::python::object			createWindow();
-			boost::python::object			createGame(
-					boost::python::object desc_obj);
-			boost::python::object			createLayout(
-					boost::python::object& window,
-					boost::python::object& environ);
-			boost::python::list			get_windows();
-			static void				export_class();
-			boost::python::object			get_joystick(int i = -1);
+	public:
+		typedef neb::py::Object<neb::fnd::app::Base> O;
+		Base();
+		Base(S app);
+		boost::python::object		create_server(
+				int portno);
+		boost::python::object		create_client(
+				std::string,
+				int portno);
+		boost::python::object		createWindow();
+		boost::python::object		createGame(
+				boost::python::object desc_obj);
+		boost::python::object		createLayout(
+				boost::python::object& window,
+				boost::python::object& environ);
+		boost::python::list		get_windows();
+		static void			export_class();
+		boost::python::object		get_joystick(
+				int i = -1);
 	};
 }}}
 
