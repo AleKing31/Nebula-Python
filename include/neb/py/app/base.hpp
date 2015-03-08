@@ -9,11 +9,14 @@
 
 namespace neb { namespace py { namespace app {
 	/***/
-	class Base
+	class Base:
+		public neb::py::Object<neb::fnd::app::Base>
 	{
 		public:
+			typedef neb::py::Object<neb::fnd::app::Base> O;
 			Base();
-			Base(std::shared_ptr<neb::fnd::app::Base> app);
+			Base(S app);
+			boost::python::object			create_server(int portno);
 			boost::python::object			createWindow();
 			boost::python::object			createGame(
 					boost::python::object desc_obj);
@@ -23,8 +26,6 @@ namespace neb { namespace py { namespace app {
 			boost::python::list			get_windows();
 			static void				export_class();
 			boost::python::object			get_joystick(int i = -1);
-		private:
-			std::weak_ptr<neb::fnd::app::Base>	_M_weak_app;
 	};
 }}}
 

@@ -21,15 +21,14 @@ typedef neb::py::app::Base THIS;
 THIS::Base()
 {
 }
-THIS::Base(std::shared_ptr<neb::fnd::app::Base> app):
-	_M_weak_app(app)
+THIS::Base(S s):
+	O(s)
 {
-	assert(app);
 }
 boost::python::object			THIS::createWindow()
 {
 	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
+	auto app = get_object();
 
 	auto window = app->createWindow();
 
@@ -42,7 +41,7 @@ boost::python::object			THIS::createLayout(
 		boost::python::object& environ_obj)
 {
 	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
+	auto app = get_object();
 
 	// window
 	auto window_ex = boost::python::extract<neb::py::window::Base&>(window_obj);
@@ -72,7 +71,7 @@ boost::python::list			THIS::get_windows()
 	boost::python::list l;
 
 	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
+	auto app = get_object();
 	
 	neb::fnd::window::util::Parent & p = *app;
 	
@@ -94,7 +93,7 @@ boost::python::object			THIS::createGame(boost::python::object desc_obj)
 
 
 	//auto app = neb::fnd::app::Base::global();
-	auto app = _M_weak_app.lock();
+	auto app = get_object();
 	
 	auto game = app->createGame(desc_py);
 	
@@ -111,7 +110,7 @@ boost::python::object			get_app()
 }
 boost::python::object			THIS::get_joystick(int i)
 {
-	auto app = _M_weak_app.lock();
+	auto app = get_object();
 	assert(app);
 
 	auto j = app->get_joystick(i);
@@ -120,10 +119,19 @@ boost::python::object			THIS::get_joystick(int i)
 
 	return boost::python::object();
 }
+boost::python::object			THIS::create_server(int portno)
+{
+	auto a = get_object();
+
+	auto s = a->create_server(portno);
+
+	return boost::python::object();
+}
 void					THIS::export_class()
 {
 	auto c = boost::python::class_<THIS>("Base");
 	
+	c.def("create_server",	&THIS::create_server);
 	c.def("createWindow",	&THIS::createWindow);
 	c.def("createLayout",	&THIS::createLayout);
 	c.def("createGame",	&THIS::createGame);
