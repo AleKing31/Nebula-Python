@@ -109,14 +109,16 @@ boost::python::object			get_app()
 
 	return boost::python::object(app_py);
 }
-neb::py::input::js			THIS::get_joystick(int i)
+boost::python::object			THIS::get_joystick(int i)
 {
 	auto app = _M_weak_app.lock();
 	assert(app);
 
 	auto j = app->get_joystick(i);
 
-	return neb::py::input::js(j);
+	if(j) return boost::python::object(neb::py::input::js(j));
+
+	return boost::python::object();
 }
 void					THIS::export_class()
 {

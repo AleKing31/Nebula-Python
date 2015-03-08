@@ -22,7 +22,7 @@ namespace neb { namespace py { namespace app {
 					boost::python::object& environ);
 			boost::python::list			get_windows();
 			static void				export_class();
-			neb::py::input::js			get_joystick(int i = -1);
+			boost::python::object			get_joystick(int i = -1);
 		private:
 			std::weak_ptr<neb::fnd::app::Base>	_M_weak_app;
 	};

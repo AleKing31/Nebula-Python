@@ -13,6 +13,7 @@ namespace neb { namespace py { namespace input {
 			typedef neb::py::Object<neb::fnd::input::js> O;
 			js();
 			js(S s);
+			static void	export_class();
 	};
 }}}
 

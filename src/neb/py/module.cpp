@@ -28,6 +28,7 @@
 #endif
 */
 
+class dummy_input {};
 class dummy_scene {};
 class dummy_shape {};
 class dummy_shape_cuboid {};
@@ -48,8 +49,12 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 	export_pose();
 	neb::py::app::Base::export_class();
 
-	
+	{
+		// input
+		bp::scope scope_input = bp::class_<dummy_input>("input");
 
+		neb::py::input::js::export_class();
+	}
 	{
 		// scene
 		bp::scope scope_scene = bp::class_<dummy_scene>("scene");
