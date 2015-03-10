@@ -5,7 +5,6 @@
 //#include <neb/fnd/app/__core.hpp>
 
 #include <neb/py/core/scene/base.hpp>
-#include <neb/py/app/base.hpp>
 
 #include <neb/py/game/game/Base.hpp>
 #include <neb/py/game/game/Desc.hpp>
@@ -14,19 +13,28 @@
 #include <neb/py/context/Base.hpp>
 #include <neb/py/environ/Base.hpp>
 #include <neb/py/gui/layout/Base.hpp>
-//#include <neb/py/game/game/Base.hpp>
+
+#include <neb/py/app/base.hpp>
 
 typedef neb::py::app::Base THIS;
 
+template <>int gal::tmp::Verbosity<neb::py::app::Base>::_M_level = DEBUG;
+
 THIS::Base()
 {
+	printv_func(DEBUG);
+
 }
 THIS::Base(S s):
 	O(s)
 {
+	printv_func(DEBUG);
+
 }
 boost::python::object			THIS::createWindow()
 {
+	printv_func(DEBUG);
+
 	//auto app = neb::fnd::app::Base::global();
 	auto app = get_object();
 
@@ -40,6 +48,8 @@ boost::python::object			THIS::createLayout(
 		boost::python::object& window_obj,
 		boost::python::object& environ_obj)
 {
+	printv_func(DEBUG);
+
 	//auto app = neb::fnd::app::Base::global();
 	auto app = get_object();
 
@@ -68,6 +78,8 @@ boost::python::object			THIS::createLayout(
 }
 boost::python::list			THIS::get_windows()
 {
+	printv_func(DEBUG);
+
 	boost::python::list l;
 
 	//auto app = neb::fnd::app::Base::global();
@@ -84,8 +96,11 @@ boost::python::list			THIS::get_windows()
 	
 	return l;
 }
-boost::python::object			THIS::createGame(boost::python::object desc_obj)
+boost::python::object			THIS::createGame(
+		boost::python::object desc_obj)
 {
+	printv_func(DEBUG);
+
 	// desc
 	auto desc_ex = boost::python::extract<neb::py::game::game::Desc&>(desc_obj);
 	assert(desc_ex.check());
@@ -102,6 +117,8 @@ boost::python::object			THIS::createGame(boost::python::object desc_obj)
 }
 boost::python::object			get_app()
 {
+	//printv_func(DEBUG);
+
 	auto app = neb::fnd::app::Base::global();
 
 	THIS app_py(app);
@@ -110,6 +127,8 @@ boost::python::object			get_app()
 }
 boost::python::object			THIS::get_joystick(int i)
 {
+	printv_func(DEBUG);
+
 	auto app = get_object();
 	assert(app);
 
@@ -121,6 +140,8 @@ boost::python::object			THIS::get_joystick(int i)
 }
 boost::python::object			THIS::create_server(int portno)
 {
+	printv_func(DEBUG);
+
 	auto a = get_object();
 
 	auto s = a->create_server(portno);
@@ -131,6 +152,8 @@ boost::python::object			THIS::create_client(
 		std::string ip,
 		int portno)
 {
+	printv_func(DEBUG);
+
 	auto a = get_object();
 
 	auto s = a->create_client(ip, portno);
@@ -139,6 +162,8 @@ boost::python::object			THIS::create_client(
 }
 void					THIS::export_class()
 {
+	printv_func(DEBUG);
+
 	auto c = boost::python::class_<THIS>("Base");
 	
 	c.def("create_server",	&THIS::create_server);

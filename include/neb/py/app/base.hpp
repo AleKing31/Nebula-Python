@@ -3,6 +3,8 @@
 
 #include <boost/python.hpp>
 
+#include <gal/stl/verbosity.hpp>
+
 #include <neb/fnd/util/decl.hpp>
 
 #include <neb/py/input/js.hpp>
@@ -10,9 +12,11 @@
 namespace neb { namespace py { namespace app {
 	/***/
 	class Base:
+		public gal::tmp::Verbosity<neb::py::app::Base>,
 		public neb::py::Object<neb::fnd::app::Base>
 	{
 	public:
+		using gal::tmp::Verbosity<neb::py::app::Base>::printv;
 		typedef neb::py::Object<neb::fnd::app::Base> O;
 		Base();
 		Base(S app);
