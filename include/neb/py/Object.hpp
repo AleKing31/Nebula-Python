@@ -17,6 +17,10 @@ namespace neb { namespace py {
 			_M_object(s)
 		{
 		}
+		Object(W w):
+			_M_object(w)
+		{
+		}
 		S			get_object()
 		{
 			auto s = _M_object.lock();

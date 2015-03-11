@@ -12,6 +12,9 @@
 #include <neb/py/core/actor/rigiddynamic/base.hpp>
 #include <neb/py/core/actor/control/rigidbody/Base.hpp>
 
+#include <neb/py/net/server/Base.hpp>
+#include <neb/py/net/client/Base.hpp>
+
 #include <neb/py/game/game/Desc.hpp>
 #include <neb/py/game/game/Base.hpp>
 
@@ -48,6 +51,9 @@ BOOST_PYTHON_MODULE(PY_LIB_NAME)
 {
 	export_pose();
 	neb::py::app::Base::export_class();
+
+	neb::py::net::server::Base::export_class();
+	neb::py::net::client::Base::export_class();
 
 	{
 		// input

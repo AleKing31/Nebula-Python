@@ -14,6 +14,9 @@
 #include <neb/py/environ/Base.hpp>
 #include <neb/py/gui/layout/Base.hpp>
 
+#include <neb/py/net/server/Base.hpp>
+#include <neb/py/net/client/Base.hpp>
+
 #include <neb/py/app/base.hpp>
 
 typedef neb::py::app::Base THIS;
@@ -146,7 +149,7 @@ boost::python::object			THIS::create_server(int portno)
 
 	auto s = a->create_server(portno);
 
-	return boost::python::object();
+	return boost::python::object(neb::py::net::server::Base(s));
 }
 boost::python::object			THIS::create_client(
 		std::string ip,
@@ -156,9 +159,9 @@ boost::python::object			THIS::create_client(
 
 	auto a = get_object();
 
-	auto s = a->create_client(ip, portno);
+	auto c = a->create_client(ip, portno);
 
-	return boost::python::object();
+	return boost::python::object(neb::py::net::client::Base(c));
 }
 void					THIS::export_class()
 {
